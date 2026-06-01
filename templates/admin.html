@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin · Semiconductor Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0e1a; --panel:#0f1526; --border:#1e2d4a;
+    --text:#e2e8f7; --muted:#6b7fa8;
+    --accent:#00d4ff; --accent2:#ff6b35; --accent3:#00ff88;
+    --danger:#e74c3c; --success:#00ff88;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Syne',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+  body::before {
+    content:''; position:fixed; inset:0;
+    background-image:linear-gradient(rgba(0,212,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.03) 1px,transparent 1px);
+    background-size:60px 60px; pointer-events:none; z-index:0;
+  }
+
+  .layout { position:relative; z-index:1; display:flex; height:100vh; }
+
+  /* SIDEBAR NAV */
+  .nav {
+    width:220px; flex-shrink:0; background:rgba(15,21,38,.95); border-right:1px solid var(--border);
+    padding:20px 0; display:flex; flex-direction:column;
+  }
+  .nav-logo { padding:0 20px 20px; border-bottom:1px solid var(--border); margin-bottom:16px; }
+  .nav-logo .brand { font-family:'Space Mono',monospace; font-size:10px; color:var(--accent); letter-spacing:.2em; }
+  .nav-logo h2 { font-size:14px; font-weight:800; margin-top:4px; }
+  .nav-item {
+    padding:10px 20px; cursor:pointer; font-size:13px; font-weight:600;
+    border-left:3px solid transparent; transition:all .2s; color:var(--muted);
+  }
+  .nav-item:hover { background:rgba(0,212,255,.05); color:var(--text); }
+  .nav-item.active { border-left-color:var(--accent); color:var(--accent); background:rgba(0,212,255,.08); }
+  .nav-item .icon { margin-right:8px; }
+  .nav-bottom { margin-top:auto; padding:16px 20px; border-top:1px solid var(--border); }
+  .back-btn {
+    display:block; text-align:center; padding:8px; border-radius:6px;
+    border:1px solid var(--border); color:var(--muted); text-decoration:none;
+    font-family:'Space Mono',monospace; font-size:11px; transition:all .2s;
+  }
+  .back-btn:hover { border-color:var(--accent); color:var(--accent); }
+
+  /* MAIN CONTENT */
+  .content { flex:1; overflow-y:auto; padding:24px; }
+
+  .page { display:none; }
+  .page.active { display:block; }
+
+  .page-title { font-size:22px; font-weight:800; margin-bottom:4px; }
+  .page-sub { color:var(--muted); font-size:13px; margin-bottom:24px; }
+
+  /* CARDS / TABLE */
+  .card {
+    background:rgba(15,21,38,.9); border:1px solid var(--border); border-radius:10px;
+    padding:20px; margin-bottom:16px;
+  }
+  .card-title { font-size:14px; font-weight:700; margin-bottom:14px; color:var(--accent); }
+
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th { text-align:left; padding:8px 10px; color:var(--muted); font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.1em; border-bottom:1px solid var(--border); }
+  td { padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.04); vertical-align:middle; }
+  tr:last-child td { border-bottom:none; }
+  tr:hover td { background:rgba(255,255,255,.02); }
+
+  .badge {
+    display:inline-block; padding:2px 8px; border-radius:20px; font-size:10px;
+    font-family:'Space Mono',monospace; font-weight:700;
+  }
+  .badge.foundry { background:rgba(0,212,255,.15); color:var(--accent); }
+  .badge.memory  { background:rgba(108,92,231,.2); color:#6c5ce7; }
+  .badge.osat    { background:rgba(0,255,136,.1); color:var(--accent3); }
+
+  .color-dot { width:12px; height:12px; border-radius:50%; display:inline-block; vertical-align:middle; margin-right:6px; }
+
+  /* BUTTONS */
+  .btn {
+    padding:6px 14px; border-radius:6px; border:none; cursor:pointer;
+    font-family:'Space Mono',monospace; font-size:11px; font-weight:700; transition:all .2s;
+  }
+  .btn-primary { background:var(--accent); color:var(--bg); }
+  .btn-primary:hover { background:#00b8d9; }
+  .btn-danger  { background:rgba(231,76,60,.15); color:var(--danger); border:1px solid var(--danger); }
+  .btn-danger:hover { background:rgba(231,76,60,.3); }
+  .btn-ghost   { background:transparent; color:var(--muted); border:1px solid var(--border); }
+  .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+  .btn-sm { padding:4px 10px; font-size:10px; }
+
+  /* FORMS */
+  .form-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; }
+  .form-group { display:flex; flex-direction:column; gap:5px; }
+  .form-group label { font-size:10px; color:var(--muted); font-family:'Space Mono',monospace; letter-spacing:.1em; text-transform:uppercase; }
+  .form-group input, .form-group select, .form-group textarea {
+    background:rgba(255,255,255,.04); border:1px solid var(--border); border-radius:6px;
+    color:var(--text); padding:8px 10px; font-family:'Syne',sans-serif; font-size:13px; transition:border .2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline:none; border-color:var(--accent);
+  }
+  .form-group select option { background:#0f1526; }
+  .form-group textarea { resize:vertical; min-height:80px; }
+  .form-actions { display:flex; gap:8px; margin-top:16px; }
+
+  /* YEAR GRID in fab editor */
+  .years-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:8px; margin-top:12px; }
+  .year-cell { background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:6px; padding:10px; }
+  .year-cell label { font-family:'Space Mono',monospace; font-size:10px; color:var(--accent2); margin-bottom:5px; display:block; }
+  .year-cell input { width:100%; background:transparent; border:none; border-bottom:1px solid var(--border); color:var(--text); padding:4px 0; font-size:12px; font-family:'Space Mono',monospace; }
+  .year-cell input:focus { outline:none; border-bottom-color:var(--accent); }
+
+  /* Toast */
+  #toast {
+    position:fixed; bottom:24px; right:24px; background:var(--panel);
+    border:1px solid var(--accent3); border-radius:8px; padding:12px 20px;
+    font-family:'Space Mono',monospace; font-size:12px; color:var(--accent3);
+    opacity:0; transform:translateY(10px); transition:all .3s; z-index:999; pointer-events:none;
+  }
+  #toast.show { opacity:1; transform:translateY(0); }
+  #toast.error { border-color:var(--danger); color:var(--danger); }
+
+  /* Modal */
+  .modal-bg { position:fixed; inset:0; background:rgba(0,0,0,.7); z-index:200; display:none; align-items:center; justify-content:center; }
+  .modal-bg.open { display:flex; }
+  .modal { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:24px; width:min(600px,95vw); max-height:85vh; overflow-y:auto; }
+  .modal-title { font-size:16px; font-weight:800; margin-bottom:16px; }
+  .modal-actions { display:flex; gap:8px; margin-top:20px; justify-content:flex-end; }
+
+  ::-webkit-scrollbar { width:5px; }
+  ::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+</style>
+</head>
+<body>
+
+<div id="toast"></div>
+
+<!-- Edit Fab Modal -->
+<div class="modal-bg" id="fabModal">
+  <div class="modal">
+    <div class="modal-title" id="fabModalTitle">Edit Fab</div>
+    <div class="form-grid">
+      <div class="form-group"><label>Fab ID (unique, no spaces)</label><input id="fm-id" placeholder="tsmc-tw"/></div>
+      <div class="form-group"><label>Company</label>
+        <select id="fm-company"><option value="">— select —</option></select></div>
+      <div class="form-group"><label>Location Key</label><input id="fm-loc" placeholder="Taiwan_HQ"/></div>
+      <div class="form-group"><label>Display Name</label><input id="fm-name" placeholder="TSMC HQ Taiwan"/></div>
+    </div>
+    <div style="margin-top:16px;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;">Node by Year (leave blank = fab not active that year)</div>
+    <div class="years-grid" id="fm-years"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeFabModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveFab()">Save Fab</button>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <div class="brand">JL Advisory</div>
+      <h2>Data Editor</h2>
+    </div>
+    <div class="nav-item active" onclick="showPage('fabs')" id="nav-fabs"><span class="icon">🏭</span>Fabs</div>
+    <div class="nav-item" onclick="showPage('companies')" id="nav-companies"><span class="icon">🏢</span>Companies</div>
+    <div class="nav-item" onclick="showPage('milestones')" id="nav-milestones"><span class="icon">📌</span>Milestones</div>
+    <div class="nav-bottom">
+      <a href="/" class="back-btn">← Back to Map</a>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- FABS PAGE -->
+    <div class="page active" id="page-fabs">
+      <div class="page-title">Fabs</div>
+      <div class="page-sub">Add, edit or remove fab locations and their node technology by year.</div>
+      <div style="margin-bottom:16px;">
+        <button class="btn btn-primary" onclick="openNewFabModal()">+ Add Fab</button>
+      </div>
+      <div class="card">
+        <input type="text" placeholder="🔍  Search fabs…" id="fabSearch" oninput="filterFabs()"
+          style="width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;margin-bottom:14px;">
+        <table>
+          <thead><tr>
+            <th>ID</th><th>Company</th><th>Location</th><th>Name</th><th>Years Active</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="fabsTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- COMPANIES PAGE -->
+    <div class="page" id="page-companies">
+      <div class="page-title">Companies</div>
+      <div class="page-sub">Manage company metadata — name, category, color, and origin.</div>
+      <div class="card" style="margin-bottom:24px;">
+        <div class="card-title">Add New Company</div>
+        <div class="form-grid">
+          <div class="form-group"><label>ID (key, no spaces)</label><input id="co-id" placeholder="NewCo"/></div>
+          <div class="form-group"><label>Full Name</label><input id="co-full" placeholder="New Company Inc."/></div>
+          <div class="form-group"><label>Category</label>
+            <select id="co-cat"><option value="foundry">Foundry</option><option value="memory">Memory</option><option value="osat">OSAT</option></select></div>
+          <div class="form-group"><label>Origin</label><input id="co-origin" placeholder="US"/></div>
+          <div class="form-group"><label>Color (hex)</label><input id="co-color" type="color" value="#00d4ff" style="height:38px;padding:4px;"/></div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" onclick="addCompany()">Add Company</button>
+        </div>
+      </div>
+      <div class="card">
+        <table>
+          <thead><tr><th>ID</th><th>Full Name</th><th>Category</th><th>Origin</th><th>Color</th><th>Actions</th></tr></thead>
+          <tbody id="companiesTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- MILESTONES PAGE -->
+    <div class="page" id="page-milestones">
+      <div class="page-title">Milestones</div>
+      <div class="page-sub">Edit the key events shown in the right panel for each year.</div>
+      <div id="milestonesEditor"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let DB = null;
+let editingFabId = null;
+
+// ── boot ──────────────────────────────────────────────────────────────────────
+async function boot() {
+  const res = await fetch('/api/data');
+  DB = await res.json();
+  renderFabs();
+  renderCompanies();
+  renderMilestones();
+  populateCompanySelect();
+}
+
+// ── navigation ────────────────────────────────────────────────────────────────
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById(`page-${name}`).classList.add('active');
+  document.getElementById(`nav-${name}`).classList.add('active');
+}
+
+// ── toast ─────────────────────────────────────────────────────────────────────
+function toast(msg, isError=false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = isError ? 'error' : '';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2800);
+}
+
+// ── FABS ──────────────────────────────────────────────────────────────────────
+function renderFabs(filter='') {
+  const tbody = document.getElementById('fabsTable');
+  tbody.innerHTML = '';
+  DB.fabs
+    .filter(f => !filter || f.id.includes(filter) || f.name.toLowerCase().includes(filter.toLowerCase()) || f.company.toLowerCase().includes(filter.toLowerCase()))
+    .forEach(fab => {
+      const co = DB.companies[fab.company] || {};
+      const years = Object.keys(fab.years).sort();
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--muted)">${fab.id}</span></td>
+        <td><span class="color-dot" style="background:${co.color||'#888'};box-shadow:0 0 4px ${co.color||'#888'}40;"></span>${co.full||fab.company}</td>
+        <td style="font-family:'Space Mono',monospace;font-size:11px;">${fab.loc}</td>
+        <td>${fab.name}</td>
+        <td style="font-family:'Space Mono',monospace;font-size:10px;color:var(--muted)">${years.join(', ')}</td>
+        <td style="display:flex;gap:6px;">
+          <button class="btn btn-ghost btn-sm" onclick="openEditFabModal('${fab.id}')">Edit</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteFab('${fab.id}')">Delete</button>
+        </td>`;
+      tbody.appendChild(tr);
+    });
+}
+
+function filterFabs() { renderFabs(document.getElementById('fabSearch').value); }
+
+function populateCompanySelect() {
+  const sel = document.getElementById('fm-company');
+  sel.innerHTML = '<option value="">— select —</option>';
+  Object.entries(DB.companies).forEach(([id, co]) => {
+    sel.innerHTML += `<option value="${id}">${co.full} (${id})</option>`;
+  });
+}
+
+function buildYearsForm(existingYears={}) {
+  const years = [...new Set([...Object.keys(DB.milestones), ...DB.fabs.flatMap(f=>Object.keys(f.years))])].map(Number).sort();
+  const container = document.getElementById('fm-years');
+  container.innerHTML = '';
+  years.forEach(y => {
+    const cell = document.createElement('div'); cell.className='year-cell';
+    cell.innerHTML=`<label>${y}</label><input data-year="${y}" value="${existingYears[y]||''}" placeholder="e.g. 5nm"/>`;
+    container.appendChild(cell);
+  });
+}
+
+function openNewFabModal() {
+  editingFabId = null;
+  document.getElementById('fabModalTitle').textContent = 'Add New Fab';
+  document.getElementById('fm-id').value='';
+  document.getElementById('fm-id').disabled=false;
+  document.getElementById('fm-company').value='';
+  document.getElementById('fm-loc').value='';
+  document.getElementById('fm-name').value='';
+  buildYearsForm();
+  document.getElementById('fabModal').classList.add('open');
+}
+
+function openEditFabModal(fabId) {
+  editingFabId = fabId;
+  const fab = DB.fabs.find(f=>f.id===fabId);
+  document.getElementById('fabModalTitle').textContent = 'Edit Fab';
+  document.getElementById('fm-id').value = fab.id;
+  document.getElementById('fm-id').disabled = true;
+  document.getElementById('fm-company').value = fab.company;
+  document.getElementById('fm-loc').value = fab.loc;
+  document.getElementById('fm-name').value = fab.name;
+  buildYearsForm(fab.years);
+  document.getElementById('fabModal').classList.add('open');
+}
+
+function closeFabModal() { document.getElementById('fabModal').classList.remove('open'); }
+
+async function saveFab() {
+  const years = {};
+  document.querySelectorAll('#fm-years input').forEach(inp => {
+    if (inp.value.trim()) years[inp.dataset.year] = inp.value.trim();
+  });
+  const payload = {
+    id: document.getElementById('fm-id').value.trim(),
+    company: document.getElementById('fm-company').value,
+    loc: document.getElementById('fm-loc').value.trim(),
+    name: document.getElementById('fm-name').value.trim(),
+    years
+  };
+
+  let res;
+  if (editingFabId) {
+    res = await fetch(`/api/fabs/${editingFabId}`, { method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+  } else {
+    res = await fetch('/api/fabs', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+  }
+
+  const data = await res.json();
+  if (!res.ok) { toast(data.error || 'Error saving fab', true); return; }
+
+  const res2 = await fetch('/api/data'); DB = await res2.json();
+  renderFabs(); closeFabModal();
+  toast(editingFabId ? `✓ Updated ${payload.name}` : `✓ Added ${payload.name}`);
+}
+
+async function deleteFab(fabId) {
+  if (!confirm(`Delete fab "${fabId}"?`)) return;
+  const res = await fetch(`/api/fabs/${fabId}`, { method:'DELETE' });
+  if (!res.ok) { toast('Error deleting fab', true); return; }
+  const res2 = await fetch('/api/data'); DB = await res2.json();
+  renderFabs(); toast(`✓ Deleted ${fabId}`);
+}
+
+// ── COMPANIES ─────────────────────────────────────────────────────────────────
+function renderCompanies() {
+  const tbody = document.getElementById('companiesTable');
+  tbody.innerHTML = '';
+  Object.entries(DB.companies).forEach(([id, co]) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML=`
+      <td style="font-family:'Space Mono',monospace;font-size:11px;color:var(--muted)">${id}</td>
+      <td>${co.full}</td>
+      <td><span class="badge ${co.cat}">${co.cat}</span></td>
+      <td>${co.origin}</td>
+      <td><span class="color-dot" style="background:${co.color};box-shadow:0 0 4px ${co.color}60;"></span><span style="font-family:'Space Mono',monospace;font-size:10px;">${co.color}</span></td>
+      <td><button class="btn btn-danger btn-sm" onclick="deleteCompany('${id}')">Delete</button></td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+async function addCompany() {
+  const payload = {
+    id: document.getElementById('co-id').value.trim(),
+    full: document.getElementById('co-full').value.trim(),
+    cat: document.getElementById('co-cat').value,
+    origin: document.getElementById('co-origin').value.trim().toUpperCase(),
+    color: document.getElementById('co-color').value,
+  };
+  if (!payload.id||!payload.full||!payload.origin) { toast('Fill in all fields', true); return; }
+  const res = await fetch('/api/companies', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+  const data = await res.json();
+  if (!res.ok) { toast(data.error||'Error', true); return; }
+  const res2 = await fetch('/api/data'); DB = await res2.json();
+  renderCompanies(); populateCompanySelect();
+  ['co-id','co-full','co-origin'].forEach(id=>document.getElementById(id).value='');
+  toast(`✓ Added company ${payload.id}`);
+}
+
+async function deleteCompany(id) {
+  if (!confirm(`Delete company "${id}" and all its fabs?`)) return;
+  const res = await fetch(`/api/companies/${id}`, { method:'DELETE' });
+  if (!res.ok) { toast('Error', true); return; }
+  const res2 = await fetch('/api/data'); DB = await res2.json();
+  renderCompanies(); renderFabs(); populateCompanySelect();
+  toast(`✓ Deleted ${id}`);
+}
+
+// ── MILESTONES ────────────────────────────────────────────────────────────────
+function renderMilestones() {
+  const container = document.getElementById('milestonesEditor');
+  container.innerHTML = '';
+  const years = Object.keys(DB.milestones).map(Number).sort();
+  years.forEach(year => {
+    const card = document.createElement('div'); card.className='card';
+    card.innerHTML=`
+      <div class="card-title">${year}</div>
+      <div class="form-group">
+        <label>One milestone per line</label>
+        <textarea id="ms-${year}" rows="4">${(DB.milestones[year]||[]).join('\n')}</textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary btn-sm" onclick="saveMilestones(${year})">Save ${year}</button>
+      </div>`;
+    container.appendChild(card);
+  });
+}
+
+async function saveMilestones(year) {
+  const text = document.getElementById(`ms-${year}`).value;
+  const items = text.split('\n').map(s=>s.trim()).filter(Boolean);
+  const res = await fetch(`/api/milestones/${year}`, { method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(items) });
+  if (!res.ok) { toast('Error saving milestones', true); return; }
+  const res2 = await fetch('/api/data'); DB = await res2.json();
+  toast(`✓ Saved milestones for ${year}`);
+}
+
+boot();
+</script>
+</body>
+</html>

@@ -1,0 +1,804 @@
+{
+  "companies": {
+    "TSMC": {
+      "color": "#00d4ff",
+      "cat": "foundry",
+      "full": "TSMC",
+      "origin": "TW"
+    },
+    "Samsung": {
+      "color": "#4a90d9",
+      "cat": "foundry",
+      "full": "Samsung Foundry",
+      "origin": "KR"
+    },
+    "UMC": {
+      "color": "#2ecc71",
+      "cat": "foundry",
+      "full": "UMC",
+      "origin": "TW"
+    },
+    "GF": {
+      "color": "#e74c3c",
+      "cat": "foundry",
+      "full": "GlobalFoundries",
+      "origin": "US"
+    },
+    "Intel": {
+      "color": "#0094fb",
+      "cat": "foundry",
+      "full": "Intel Foundry",
+      "origin": "US"
+    },
+    "PSMC": {
+      "color": "#9b59b6",
+      "cat": "foundry",
+      "full": "PSMC",
+      "origin": "TW"
+    },
+    "SMIC": {
+      "color": "#b8860b",
+      "cat": "foundry",
+      "full": "SMIC",
+      "origin": "CN"
+    },
+    "Nexchip": {
+      "color": "#f39c12",
+      "cat": "foundry",
+      "full": "Nexchip",
+      "origin": "CN"
+    },
+    "HHG": {
+      "color": "#e91e63",
+      "cat": "foundry",
+      "full": "HHGrace",
+      "origin": "CN"
+    },
+    "VIS": {
+      "color": "#00bcd4",
+      "cat": "foundry",
+      "full": "VIS",
+      "origin": "TW"
+    },
+    "Micron": {
+      "color": "#d63031",
+      "cat": "memory",
+      "full": "Micron Technology",
+      "origin": "US"
+    },
+    "SKHynix": {
+      "color": "#6c5ce7",
+      "cat": "memory",
+      "full": "SK Hynix",
+      "origin": "KR"
+    },
+    "YMTC": {
+      "color": "#e17055",
+      "cat": "memory",
+      "full": "YMTC",
+      "origin": "CN"
+    },
+    "CXMT": {
+      "color": "#fd79a8",
+      "cat": "memory",
+      "full": "CXMT",
+      "origin": "CN"
+    },
+    "Samsung_mem": {
+      "color": "#74b9ff",
+      "cat": "memory",
+      "full": "Samsung Memory",
+      "origin": "KR"
+    },
+    "ASE": {
+      "color": "#55efc4",
+      "cat": "osat",
+      "full": "ASE Group",
+      "origin": "TW"
+    },
+    "SPIL": {
+      "color": "#00cec9",
+      "cat": "osat",
+      "full": "SPIL",
+      "origin": "TW"
+    },
+    "ASEChina": {
+      "color": "#81ecec",
+      "cat": "osat",
+      "full": "ASE China",
+      "origin": "CN"
+    }
+  },
+  "coords": {
+    "Oregon": [
+      15.5,
+      20
+    ],
+    "Arizona": [
+      13,
+      28
+    ],
+    "Boise_ID": [
+      12,
+      22
+    ],
+    "Malta_NY": [
+      20,
+      23
+    ],
+    "Chaska_MN": [
+      17,
+      21
+    ],
+    "Purdue_IN": [
+      18.5,
+      24
+    ],
+    "Taylor_TX": [
+      16,
+      31
+    ],
+    "Dresden_DE": [
+      48.5,
+      22
+    ],
+    "Crolles_FR": [
+      46,
+      23
+    ],
+    "Magdeburg_DE": [
+      48,
+      19
+    ],
+    "Kiryat_Gat_IL": [
+      55,
+      27
+    ],
+    "Dresden_EU": [
+      47.5,
+      21
+    ],
+    "Taiwan_HQ": [
+      84,
+      30
+    ],
+    "Tainan": [
+      84,
+      32
+    ],
+    "Hsinchu": [
+      83.5,
+      30.5
+    ],
+    "Kaohsiung": [
+      83.5,
+      34
+    ],
+    "Hwaseong": [
+      83,
+      22
+    ],
+    "Icheon": [
+      83.5,
+      23
+    ],
+    "Cheongju": [
+      83,
+      23.5
+    ],
+    "Kumamoto_JP": [
+      87,
+      26
+    ],
+    "Hiroshima_JP": [
+      87.5,
+      22
+    ],
+    "Saijo_JP": [
+      87.5,
+      23.5
+    ],
+    "Beijing": [
+      78,
+      20
+    ],
+    "Shanghai": [
+      81,
+      27
+    ],
+    "Shenzhen": [
+      80,
+      31
+    ],
+    "HeJian_CN": [
+      79,
+      22
+    ],
+    "Wuhan_CN": [
+      79,
+      27
+    ],
+    "Hefei_CN": [
+      80,
+      26
+    ],
+    "Singapore": [
+      75,
+      39
+    ],
+    "Kaohsiung_ASE": [
+      84,
+      34.5
+    ],
+    "Shanghai_SPIL": [
+      81.5,
+      27.5
+    ],
+    "China_ASE": [
+      80,
+      30
+    ]
+  },
+  "fabs": [
+    {
+      "id": "tsmc-tw",
+      "company": "TSMC",
+      "loc": "Taiwan_HQ",
+      "name": "TSMC HQ Taiwan",
+      "years": {
+        "2020": "7nm/5nm",
+        "2021": "5nm/3nm(dev)",
+        "2022": "5nm/3nm(dev)",
+        "2023": "3nm/N2(dev)",
+        "2024": "3nm/N2",
+        "2025": "N2/N3",
+        "2026": "N2/N3/N5/CoWoS"
+      }
+    },
+    {
+      "id": "tsmc-az",
+      "company": "TSMC",
+      "loc": "Arizona",
+      "name": "TSMC Fab21 Arizona",
+      "years": {
+        "2024": "N4(start)",
+        "2025": "N4",
+        "2026": "N4\u2192N3"
+      }
+    },
+    {
+      "id": "tsmc-jp",
+      "company": "TSMC",
+      "loc": "Kumamoto_JP",
+      "name": "TSMC Kumamoto",
+      "years": {
+        "2024": "N22/N28(start)",
+        "2025": "N22/N28",
+        "2026": "N22/N28\u2192N3"
+      }
+    },
+    {
+      "id": "tsmc-eu",
+      "company": "TSMC",
+      "loc": "Dresden_EU",
+      "name": "TSMC Dresden",
+      "years": {
+        "2026": "N28\u2192N12(planned 2027)"
+      }
+    },
+    {
+      "id": "sam-hw",
+      "company": "Samsung",
+      "loc": "Hwaseong",
+      "name": "Samsung Hwaseong/PT",
+      "years": {
+        "2020": "5nm/7nm",
+        "2021": "5nm/4nm",
+        "2022": "4nm/3nm(dev)",
+        "2023": "3nm(GAA)/4nm",
+        "2024": "3nm/4nm",
+        "2025": "3nm/4nm",
+        "2026": "3nm/4nm"
+      }
+    },
+    {
+      "id": "sam-tx",
+      "company": "Samsung",
+      "loc": "Taylor_TX",
+      "name": "Samsung Taylor TX",
+      "years": {
+        "2024": "4nm(constr)",
+        "2025": "4nm(ramp)",
+        "2026": "4nm"
+      }
+    },
+    {
+      "id": "umc-tw",
+      "company": "UMC",
+      "loc": "Tainan",
+      "name": "UMC HQ Tainan",
+      "years": {
+        "2020": "28nm/22nm",
+        "2021": "28nm/22nm",
+        "2022": "28nm/22nm",
+        "2023": "28nm/22nm",
+        "2024": "22nm/28nm",
+        "2025": "22nm/28nm",
+        "2026": "22nm/28nm"
+      }
+    },
+    {
+      "id": "umc-sg",
+      "company": "UMC",
+      "loc": "Singapore",
+      "name": "UMC Singapore",
+      "years": {
+        "2020": "40nm/28nm",
+        "2021": "28nm",
+        "2022": "28nm",
+        "2023": "28nm",
+        "2024": "28nm",
+        "2025": "28nm",
+        "2026": "28nm"
+      }
+    },
+    {
+      "id": "umc-cn",
+      "company": "UMC",
+      "loc": "HeJian_CN",
+      "name": "UMC He Jian CN",
+      "years": {
+        "2020": "55nm/28nm",
+        "2021": "55nm/28nm",
+        "2022": "55nm/28nm",
+        "2023": "55nm/28nm",
+        "2024": "28nm/55nm",
+        "2025": "28nm/55nm",
+        "2026": "28nm/55nm"
+      }
+    },
+    {
+      "id": "gf-mn",
+      "company": "GF",
+      "loc": "Chaska_MN",
+      "name": "GF Fab 3E Chaska MN",
+      "years": {
+        "2020": "130nm\u219228nm",
+        "2021": "130nm\u219228nm",
+        "2022": "28nm\u2192130nm",
+        "2023": "28nm\u2192130nm",
+        "2024": "28nm\u2192130nm",
+        "2025": "28nm\u2192130nm",
+        "2026": "28nm\u2192130nm"
+      }
+    },
+    {
+      "id": "gf-ny",
+      "company": "GF",
+      "loc": "Malta_NY",
+      "name": "GF Fab 8 Malta NY",
+      "years": {
+        "2020": "14nm/12nm/22nm",
+        "2021": "12nm/22nm",
+        "2022": "12nm/22nm",
+        "2023": "12nm/22nm",
+        "2024": "12nm/22nm",
+        "2025": "12nm/22nm",
+        "2026": "12nm/22nm"
+      }
+    },
+    {
+      "id": "gf-de",
+      "company": "GF",
+      "loc": "Dresden_DE",
+      "name": "GF Fab 1 Dresden",
+      "years": {
+        "2020": "22nm FD-SOI",
+        "2021": "22nm FD-SOI",
+        "2022": "22nm FD-SOI",
+        "2023": "22nm FD-SOI",
+        "2024": "22nm FD-SOI",
+        "2025": "22nm FD-SOI",
+        "2026": "22nm FD-SOI"
+      }
+    },
+    {
+      "id": "gf-fr",
+      "company": "GF",
+      "loc": "Crolles_FR",
+      "name": "GF Crolles France",
+      "years": {
+        "2020": "28nm FD-SOI",
+        "2021": "28nm FD-SOI",
+        "2022": "28nm FD-SOI",
+        "2023": "28nm FD-SOI",
+        "2024": "28nm FD-SOI",
+        "2025": "28nm FD-SOI",
+        "2026": "28nm FD-SOI"
+      }
+    },
+    {
+      "id": "gf-sg",
+      "company": "GF",
+      "loc": "Singapore",
+      "name": "GF Singapore",
+      "years": {
+        "2020": "40nm\u21920.18um",
+        "2021": "40nm\u21920.18um",
+        "2022": "40nm\u21920.18um",
+        "2023": "40nm\u21920.18um",
+        "2024": "40nm\u21920.18um",
+        "2025": "40nm\u21920.18um",
+        "2026": "40nm\u21920.18um"
+      }
+    },
+    {
+      "id": "int-or",
+      "company": "Intel",
+      "loc": "Oregon",
+      "name": "Intel Hillsboro OR",
+      "years": {
+        "2020": "10nm",
+        "2021": "10nm/7nm(dev)",
+        "2022": "Intel 7",
+        "2023": "Intel 4/3",
+        "2024": "Intel 3/18A",
+        "2025": "Intel 3/18A",
+        "2026": "Intel 3/18A"
+      }
+    },
+    {
+      "id": "int-az",
+      "company": "Intel",
+      "loc": "Arizona",
+      "name": "Intel Chandler AZ",
+      "years": {
+        "2020": "14nm",
+        "2021": "14nm",
+        "2022": "Intel 7",
+        "2023": "Intel 4",
+        "2024": "Intel 18A(dev)",
+        "2025": "Intel 18A",
+        "2026": "Intel 18A"
+      }
+    },
+    {
+      "id": "int-il",
+      "company": "Intel",
+      "loc": "Kiryat_Gat_IL",
+      "name": "Intel Kiryat Gat IL",
+      "years": {
+        "2020": "14nm",
+        "2021": "10nm",
+        "2022": "Intel 7",
+        "2023": "Intel 7",
+        "2024": "Intel 4/3",
+        "2025": "Intel 4/3",
+        "2026": "Intel 4/3"
+      }
+    },
+    {
+      "id": "int-de",
+      "company": "Intel",
+      "loc": "Magdeburg_DE",
+      "name": "Intel Magdeburg DE",
+      "years": {
+        "2026": "Intel 18A (planned 2027)"
+      }
+    },
+    {
+      "id": "psmc-tw",
+      "company": "PSMC",
+      "loc": "Hsinchu",
+      "name": "PSMC Hsinchu",
+      "years": {
+        "2020": "40nm/90nm",
+        "2021": "40nm/90nm",
+        "2022": "40nm/90nm",
+        "2023": "40nm/90nm",
+        "2024": "40nm/90nm",
+        "2025": "40nm/90nm",
+        "2026": "40nm/90nm"
+      }
+    },
+    {
+      "id": "psmc-jp",
+      "company": "PSMC",
+      "loc": "Saijo_JP",
+      "name": "PSMC Saijo Japan",
+      "years": {
+        "2026": "40nm (planned 2027)"
+      }
+    },
+    {
+      "id": "smic-bj",
+      "company": "SMIC",
+      "loc": "Beijing",
+      "name": "SMIC Beijing",
+      "years": {
+        "2020": "55nm/28nm",
+        "2021": "28nm/55nm",
+        "2022": "28nm/55nm",
+        "2023": "28nm/55nm",
+        "2024": "28nm/55nm",
+        "2025": "28nm/55nm",
+        "2026": "28nm/55nm"
+      }
+    },
+    {
+      "id": "smic-sh",
+      "company": "SMIC",
+      "loc": "Shanghai",
+      "name": "SMIC Shanghai",
+      "years": {
+        "2020": "28nm/14nm",
+        "2021": "14nm/28nm",
+        "2022": "14nm/28nm",
+        "2023": "14nm/28nm",
+        "2024": "14nm/28nm",
+        "2025": "14nm/28nm",
+        "2026": "14nm/28nm"
+      }
+    },
+    {
+      "id": "smic-sz",
+      "company": "SMIC",
+      "loc": "Shenzhen",
+      "name": "SMIC Shenzhen",
+      "years": {
+        "2021": "40nm/28nm",
+        "2022": "28nm\u21920.18um",
+        "2023": "28nm\u21920.18um",
+        "2024": "28nm\u21920.18um",
+        "2025": "28nm\u21920.18um",
+        "2026": "28nm\u21920.18um"
+      }
+    },
+    {
+      "id": "nx-wh",
+      "company": "Nexchip",
+      "loc": "Hefei_CN",
+      "name": "Nexchip Hefei",
+      "years": {
+        "2021": "65nm",
+        "2022": "40nm/28nm",
+        "2023": "28nm/40nm",
+        "2024": "28nm",
+        "2025": "28nm",
+        "2026": "28nm"
+      }
+    },
+    {
+      "id": "hhg-sh",
+      "company": "HHG",
+      "loc": "Shanghai",
+      "name": "HHGrace Shanghai",
+      "years": {
+        "2020": "0.11um",
+        "2021": "0.11um/65nm",
+        "2022": "65nm/40nm",
+        "2023": "40nm/28nm",
+        "2024": "28nm/40nm",
+        "2025": "28nm",
+        "2026": "28nm"
+      }
+    },
+    {
+      "id": "vis-kh",
+      "company": "VIS",
+      "loc": "Kaohsiung",
+      "name": "VIS Kaohsiung",
+      "years": {
+        "2020": "0.25um\u21920.11um",
+        "2021": "0.25um\u21920.11um",
+        "2022": "0.25um\u21920.11um",
+        "2023": "0.25um\u21920.11um",
+        "2024": "0.11\u21920.25um",
+        "2025": "0.11\u21920.25um",
+        "2026": "0.11\u21920.25um"
+      }
+    },
+    {
+      "id": "mic-id",
+      "company": "Micron",
+      "loc": "Boise_ID",
+      "name": "Micron Boise ID",
+      "years": {
+        "2020": "DRAM/NAND",
+        "2021": "DRAM/NAND",
+        "2022": "DRAM/NAND",
+        "2023": "DRAM/NAND",
+        "2024": "DRAM/NAND",
+        "2025": "DRAM/NAND",
+        "2026": "DRAM/NAND"
+      }
+    },
+    {
+      "id": "mic-sg",
+      "company": "Micron",
+      "loc": "Singapore",
+      "name": "Micron Singapore",
+      "years": {
+        "2020": "NAND",
+        "2021": "NAND",
+        "2022": "NAND",
+        "2023": "NAND",
+        "2024": "NAND",
+        "2025": "NAND",
+        "2026": "NAND"
+      }
+    },
+    {
+      "id": "mic-jp",
+      "company": "Micron",
+      "loc": "Hiroshima_JP",
+      "name": "Micron Hiroshima",
+      "years": {
+        "2020": "DRAM",
+        "2021": "DRAM",
+        "2022": "DRAM",
+        "2023": "DRAM 1\u03b2",
+        "2024": "DRAM 1\u03b3",
+        "2025": "DRAM 1\u03b3",
+        "2026": "DRAM 1\u03b3"
+      }
+    },
+    {
+      "id": "skh-kr",
+      "company": "SKHynix",
+      "loc": "Icheon",
+      "name": "SK Hynix Icheon/Cheongju",
+      "years": {
+        "2020": "HBM2/DRAM",
+        "2021": "HBM2E/DRAM",
+        "2022": "HBM3/DRAM",
+        "2023": "HBM3E/DRAM",
+        "2024": "HBM3E/DRAM",
+        "2025": "HBM3E/DRAM",
+        "2026": "HBM3/DRAM"
+      }
+    },
+    {
+      "id": "skh-us",
+      "company": "SKHynix",
+      "loc": "Purdue_IN",
+      "name": "SK Hynix Purdue IN",
+      "years": {
+        "2025": "HBM US Mfg (dev)",
+        "2026": "HBM US Mfg."
+      }
+    },
+    {
+      "id": "ymtc-wh",
+      "company": "YMTC",
+      "loc": "Wuhan_CN",
+      "name": "YMTC Wuhan",
+      "years": {
+        "2020": "64L NAND",
+        "2021": "128L NAND",
+        "2022": "128L/Xtacking2",
+        "2023": "232L NAND",
+        "2024": "232L NAND",
+        "2025": "300L NAND",
+        "2026": "300L NAND"
+      }
+    },
+    {
+      "id": "cxmt-hf",
+      "company": "CXMT",
+      "loc": "Hefei_CN",
+      "name": "CXMT Hefei",
+      "years": {
+        "2021": "DDR4 19nm",
+        "2022": "DDR4 17nm",
+        "2023": "DDR4 17nm",
+        "2024": "DDR5 17nm",
+        "2025": "DDR5 17nm/LPDDR5",
+        "2026": "LPDDR5/HBM(dev)"
+      }
+    },
+    {
+      "id": "sam-mem",
+      "company": "Samsung_mem",
+      "loc": "Hwaseong",
+      "name": "Samsung Hwaseong Mem",
+      "years": {
+        "2020": "HBM2/DRAM",
+        "2021": "HBM2E/DRAM",
+        "2022": "HBM3",
+        "2023": "HBM3E/DRAM",
+        "2024": "HBM3E/DRAM",
+        "2025": "HBM3E/DRAM",
+        "2026": "3nm/4nm/DRAM"
+      }
+    },
+    {
+      "id": "ase-tw",
+      "company": "ASE",
+      "loc": "Kaohsiung_ASE",
+      "name": "ASE Kaohsiung",
+      "years": {
+        "2020": "ATP/SiP",
+        "2021": "ATP/SiP",
+        "2022": "ATP/Advanced Pkg",
+        "2023": "Advanced Pkg",
+        "2024": "Advanced Pkg/CoWoS-like",
+        "2025": "Advanced Pkg",
+        "2026": "Advanced Pkg"
+      }
+    },
+    {
+      "id": "spil-cn",
+      "company": "SPIL",
+      "loc": "Shanghai_SPIL",
+      "name": "SPIL Shanghai",
+      "years": {
+        "2020": "Wire Bond/Flip Chip",
+        "2021": "Flip Chip",
+        "2022": "Flip Chip/SiP",
+        "2023": "SiP/FC",
+        "2024": "SiP/FC",
+        "2025": "Advanced Pkg",
+        "2026": "Advanced Pkg"
+      }
+    },
+    {
+      "id": "ase-cn",
+      "company": "ASEChina",
+      "loc": "China_ASE",
+      "name": "ASE China",
+      "years": {
+        "2020": "Wire Bond",
+        "2021": "Wire Bond/ATP",
+        "2022": "ATP",
+        "2023": "ATP/SiP",
+        "2024": "ATP/SiP",
+        "2025": "SiP/Advanced",
+        "2026": "Advanced Pkg"
+      }
+    }
+  ],
+  "milestones": {
+    "2020": [
+      "TSMC 5nm mass prod.",
+      "COVID disrupts supply chains",
+      "SMIC hit by US restrictions"
+    ],
+    "2021": [
+      "TSMC 5nm ramps up",
+      "Chip shortage crisis peaks",
+      "YMTC 128L NAND prod.",
+      "US CHIPS Act discussion"
+    ],
+    "2022": [
+      "TSMC 3nm dev",
+      "Samsung 3nm GAA first",
+      "YMTC Xtacking 2.0",
+      "Inflation Reduction Act"
+    ],
+    "2023": [
+      "TSMC 3nm mass prod.",
+      "CXMT DDR4 volume ramp",
+      "SK Hynix HBM3E launch",
+      "Export controls expand"
+    ],
+    "2024": [
+      "TSMC Fab21 AZ opens",
+      "TSMC Kumamoto opens",
+      "Intel 18A development",
+      "SK Hynix HBM3E AI boom"
+    ],
+    "2025": [
+      "TSMC N2 production",
+      "Intel 18A risk prod.",
+      "YMTC 300L NAND",
+      "SK Hynix Purdue dev start"
+    ],
+    "2026": [
+      "TSMC N2 full ramp",
+      "Intel Dresden planned",
+      "CXMT HBM dev begins",
+      "Global fab count peaks"
+    ]
+  }
+}
