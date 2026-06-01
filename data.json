@@ -107,6 +107,606 @@
       "cat": "osat",
       "full": "ASE China",
       "origin": "CN"
+    },
+    "Rapidus": {
+      "color": "#ff4d6d",
+      "cat": "foundry",
+      "full": "Rapidus",
+      "origin": "JP"
+    },
+    "JASM": {
+      "color": "#ff6b9d",
+      "cat": "foundry",
+      "full": "JASM (TSMC JV)",
+      "origin": "JP"
+    },
+    "TSMC_SG": {
+      "color": "#00b8d9",
+      "cat": "foundry",
+      "full": "TSMC Singapore",
+      "origin": "SG"
+    },
+    "TowerSemi": {
+      "color": "#ffa502",
+      "cat": "foundry",
+      "full": "Tower Semiconductor",
+      "origin": "IL"
+    },
+    "TowerUS": {
+      "color": "#ffb347",
+      "cat": "foundry",
+      "full": "Tower Semi US (Newport Beach)",
+      "origin": "US"
+    },
+    "TowerJP": {
+      "color": "#ffc97a",
+      "cat": "foundry",
+      "full": "Tower Semi Japan (Uozu)",
+      "origin": "JP"
+    },
+    "DB_HiTek": {
+      "color": "#a29bfe",
+      "cat": "foundry",
+      "full": "DB HiTek",
+      "origin": "KR"
+    },
+    "Magnachip": {
+      "color": "#b39ddb",
+      "cat": "foundry",
+      "full": "Magnachip",
+      "origin": "KR"
+    },
+    "KEY_Foundry": {
+      "color": "#ce93d8",
+      "cat": "foundry",
+      "full": "KEY Foundry",
+      "origin": "KR"
+    },
+    "Dongbu": {
+      "color": "#f48fb1",
+      "cat": "foundry",
+      "full": "Dongbu HiTek",
+      "origin": "KR"
+    },
+    "SFAB": {
+      "color": "#80cbc4",
+      "cat": "foundry",
+      "full": "Samsung Austin Fab",
+      "origin": "US"
+    },
+    "Powerchip": {
+      "color": "#4db6ac",
+      "cat": "foundry",
+      "full": "Powerchip Semi (PSMC parent)",
+      "origin": "TW"
+    },
+    "Winbond": {
+      "color": "#26a69a",
+      "cat": "foundry",
+      "full": "Winbond Electronics",
+      "origin": "TW"
+    },
+    "Macronix": {
+      "color": "#00897b",
+      "cat": "foundry",
+      "full": "Macronix International",
+      "origin": "TW"
+    },
+    "eMemory": {
+      "color": "#00695c",
+      "cat": "foundry",
+      "full": "eMemory Technology",
+      "origin": "TW"
+    },
+    "AMIC": {
+      "color": "#33691e",
+      "cat": "foundry",
+      "full": "AMIC Technology",
+      "origin": "TW"
+    },
+    "Vanguard": {
+      "color": "#558b2f",
+      "cat": "foundry",
+      "full": "Vanguard International Semi",
+      "origin": "TW"
+    },
+    "Nanya": {
+      "color": "#9e9d24",
+      "cat": "foundry",
+      "full": "Nanya Technology",
+      "origin": "TW"
+    },
+    "ESMC": {
+      "color": "#f9a825",
+      "cat": "foundry",
+      "full": "ESMC (EU JV)",
+      "origin": "DE"
+    },
+    "STMicro": {
+      "color": "#ff8f00",
+      "cat": "foundry",
+      "full": "STMicroelectronics",
+      "origin": "FR"
+    },
+    "Infineon": {
+      "color": "#ef6c00",
+      "cat": "foundry",
+      "full": "Infineon Technologies",
+      "origin": "DE"
+    },
+    "Bosch": {
+      "color": "#e65100",
+      "cat": "foundry",
+      "full": "Bosch Semiconductor",
+      "origin": "DE"
+    },
+    "NXP": {
+      "color": "#bf360c",
+      "cat": "foundry",
+      "full": "NXP Semiconductors",
+      "origin": "NL"
+    },
+    "Renesas": {
+      "color": "#4e342e",
+      "cat": "foundry",
+      "full": "Renesas Electronics",
+      "origin": "JP"
+    },
+    "Rohm": {
+      "color": "#6d4c41",
+      "cat": "foundry",
+      "full": "Rohm Semiconductor",
+      "origin": "JP"
+    },
+    "Fuji_Elec": {
+      "color": "#795548",
+      "cat": "foundry",
+      "full": "Fuji Electric",
+      "origin": "JP"
+    },
+    "Toshiba_Semi": {
+      "color": "#8d6e63",
+      "cat": "foundry",
+      "full": "Toshiba/Kioxia Semi",
+      "origin": "JP"
+    },
+    "Mitsubishi_S": {
+      "color": "#a1887f",
+      "cat": "foundry",
+      "full": "Mitsubishi Electric Semi",
+      "origin": "JP"
+    },
+    "Sony_Semi": {
+      "color": "#bcaaa4",
+      "cat": "foundry",
+      "full": "Sony Semiconductor",
+      "origin": "JP"
+    },
+    "Sharp_Semi": {
+      "color": "#cfd8dc",
+      "cat": "foundry",
+      "full": "Sharp Microelectronics",
+      "origin": "JP"
+    },
+    "ON_Semi": {
+      "color": "#607d8b",
+      "cat": "foundry",
+      "full": "onsemi",
+      "origin": "US"
+    },
+    "Microchip": {
+      "color": "#546e7a",
+      "cat": "foundry",
+      "full": "Microchip Technology",
+      "origin": "US"
+    },
+    "TI_Fab": {
+      "color": "#455a64",
+      "cat": "foundry",
+      "full": "Texas Instruments Fab",
+      "origin": "US"
+    },
+    "Skyworks": {
+      "color": "#78909c",
+      "cat": "foundry",
+      "full": "Skyworks Solutions",
+      "origin": "US"
+    },
+    "Wolfspeed": {
+      "color": "#b0bec5",
+      "cat": "foundry",
+      "full": "Wolfspeed (SiC)",
+      "origin": "US"
+    },
+    "Qorvo": {
+      "color": "#eceff1",
+      "cat": "foundry",
+      "full": "Qorvo",
+      "origin": "US"
+    },
+    "MACOM": {
+      "color": "#ffd54f",
+      "cat": "foundry",
+      "full": "MACOM Technology",
+      "origin": "US"
+    },
+    "IQE": {
+      "color": "#aed581",
+      "cat": "foundry",
+      "full": "IQE (compound semi)",
+      "origin": "GB"
+    },
+    "Newport_Wafer": {
+      "color": "#80deea",
+      "cat": "foundry",
+      "full": "Newport Wafer Fab",
+      "origin": "GB"
+    },
+    "X_Fab": {
+      "color": "#ce93d8",
+      "cat": "foundry",
+      "full": "X-FAB Silicon Foundries",
+      "origin": "DE"
+    },
+    "LFoundry": {
+      "color": "#ef9a9a",
+      "cat": "foundry",
+      "full": "LFoundry",
+      "origin": "IT"
+    },
+    "Siltronic": {
+      "color": "#fff59d",
+      "cat": "foundry",
+      "full": "Siltronic",
+      "origin": "DE"
+    },
+    "Elmos": {
+      "color": "#b2dfdb",
+      "cat": "foundry",
+      "full": "Elmos Semiconductor",
+      "origin": "DE"
+    },
+    "AMS_Osram": {
+      "color": "#f8bbd0",
+      "cat": "foundry",
+      "full": "ams OSRAM",
+      "origin": "AT"
+    },
+    "BSMC": {
+      "color": "#ffe0b2",
+      "cat": "foundry",
+      "full": "BSMC (Beijing Semi)",
+      "origin": "CN"
+    },
+    "SMSC_HJ": {
+      "color": "#d7ccc8",
+      "cat": "foundry",
+      "full": "Hua Hong Semi",
+      "origin": "CN"
+    },
+    "HHSemi": {
+      "color": "#c5cae9",
+      "cat": "foundry",
+      "full": "Hua Hong Grace",
+      "origin": "CN"
+    },
+    "CXMT2": {
+      "color": "#ffccbc",
+      "cat": "foundry",
+      "full": "CXMT (Changxin)",
+      "origin": "CN"
+    },
+    "SiEn": {
+      "color": "#dcedc8",
+      "cat": "foundry",
+      "full": "SiEn (Qingdao) IC",
+      "origin": "CN"
+    },
+    "GTA_Semi": {
+      "color": "#b2ebf2",
+      "cat": "foundry",
+      "full": "GTA Semiconductor",
+      "origin": "CN"
+    },
+    "CR_Micro": {
+      "color": "#f3e5f5",
+      "cat": "foundry",
+      "full": "CR Micro",
+      "origin": "CN"
+    },
+    "JCET": {
+      "color": "#55efc4",
+      "cat": "osat",
+      "full": "JCET Group",
+      "origin": "CN"
+    },
+    "Amkor": {
+      "color": "#00b894",
+      "cat": "osat",
+      "full": "Amkor Technology",
+      "origin": "US"
+    },
+    "Powertech": {
+      "color": "#00cec9",
+      "cat": "osat",
+      "full": "Powertech Technology",
+      "origin": "TW"
+    },
+    "ChipMOS": {
+      "color": "#0984e3",
+      "cat": "osat",
+      "full": "ChipMOS Technologies",
+      "origin": "TW"
+    },
+    "UTAC": {
+      "color": "#6c5ce7",
+      "cat": "osat",
+      "full": "UTAC Group",
+      "origin": "SG"
+    },
+    "STATS_ChipPAC": {
+      "color": "#a29bfe",
+      "cat": "osat",
+      "full": "STATS ChipPAC",
+      "origin": "SG"
+    },
+    "Unisem": {
+      "color": "#fd79a8",
+      "cat": "osat",
+      "full": "Unisem Group",
+      "origin": "MY"
+    },
+    "Inari": {
+      "color": "#e17055",
+      "cat": "osat",
+      "full": "Inari Amertron",
+      "origin": "MY"
+    },
+    "Carsem": {
+      "color": "#d63031",
+      "cat": "osat",
+      "full": "Carsem",
+      "origin": "MY"
+    },
+    "PTI": {
+      "color": "#fdcb6e",
+      "cat": "osat",
+      "full": "Packaging Tech Inc (PTI)",
+      "origin": "TW"
+    },
+    "SCI_Semi": {
+      "color": "#e84393",
+      "cat": "osat",
+      "full": "SCI Semiconductor",
+      "origin": "CN"
+    },
+    "Tianshui_Hua": {
+      "color": "#ff7675",
+      "cat": "osat",
+      "full": "Tianshui Huatian Tech",
+      "origin": "CN"
+    },
+    "Tongfu_Micro": {
+      "color": "#fab1a0",
+      "cat": "osat",
+      "full": "Tongfu Microelectronics",
+      "origin": "CN"
+    },
+    "NEPES": {
+      "color": "#81ecec",
+      "cat": "osat",
+      "full": "NEPES",
+      "origin": "KR"
+    },
+    "Hana_Micro": {
+      "color": "#74b9ff",
+      "cat": "osat",
+      "full": "Hana Microdisplay",
+      "origin": "KR"
+    },
+    "STS_Semi": {
+      "color": "#a8e6cf",
+      "cat": "osat",
+      "full": "STS Semiconductor",
+      "origin": "KR"
+    },
+    "JECT": {
+      "color": "#dfe6e9",
+      "cat": "osat",
+      "full": "JECT",
+      "origin": "JP"
+    },
+    "Kyocera_Semi": {
+      "color": "#b2bec3",
+      "cat": "osat",
+      "full": "Kyocera Semiconductor",
+      "origin": "JP"
+    },
+    "Ibiden": {
+      "color": "#636e72",
+      "cat": "osat",
+      "full": "Ibiden (substrate)",
+      "origin": "JP"
+    },
+    "SK_Hynix_OSAT": {
+      "color": "#8e44ad",
+      "cat": "osat",
+      "full": "SK Hynix OSAT",
+      "origin": "KR"
+    },
+    "Samsung_OSAT": {
+      "color": "#2980b9",
+      "cat": "osat",
+      "full": "Samsung OSAT",
+      "origin": "KR"
+    },
+    "TSMC_OSAT": {
+      "color": "#27ae60",
+      "cat": "osat",
+      "full": "TSMC Advanced Packaging",
+      "origin": "TW"
+    },
+    "WuXi_AppTec": {
+      "color": "#f39c12",
+      "cat": "osat",
+      "full": "WuXi AppTec Semi",
+      "origin": "CN"
+    },
+    "HBM_SK": {
+      "color": "#6c5ce7",
+      "cat": "memory",
+      "full": "SK Hynix HBM",
+      "origin": "KR"
+    },
+    "Kioxia": {
+      "color": "#e17055",
+      "cat": "memory",
+      "full": "Kioxia (NAND)",
+      "origin": "JP"
+    },
+    "WDC": {
+      "color": "#0984e3",
+      "cat": "memory",
+      "full": "Western Digital / SanDisk",
+      "origin": "US"
+    },
+    "Samsung_NAND": {
+      "color": "#00b894",
+      "cat": "memory",
+      "full": "Samsung NAND",
+      "origin": "KR"
+    },
+    "Solidigm": {
+      "color": "#6c5ce7",
+      "cat": "memory",
+      "full": "Solidigm (Intel NAND)",
+      "origin": "US"
+    },
+    "ADATA": {
+      "color": "#fd79a8",
+      "cat": "memory",
+      "full": "ADATA Technology",
+      "origin": "TW"
+    },
+    "TeamGroup": {
+      "color": "#fdcb6e",
+      "cat": "memory",
+      "full": "Team Group",
+      "origin": "TW"
+    },
+    "Kingmax": {
+      "color": "#81ecec",
+      "cat": "memory",
+      "full": "Kingmax",
+      "origin": "TW"
+    },
+    "BIWIN": {
+      "color": "#a29bfe",
+      "cat": "memory",
+      "full": "BIWIN Storage",
+      "origin": "CN"
+    },
+    "GigaDevice": {
+      "color": "#ff7675",
+      "cat": "memory",
+      "full": "GigaDevice",
+      "origin": "CN"
+    },
+    "JHICC": {
+      "color": "#fab1a0",
+      "cat": "memory",
+      "full": "JHICC (Jinhua)",
+      "origin": "CN"
+    },
+    "InnoGrit": {
+      "color": "#dfe6e9",
+      "cat": "foundry",
+      "full": "InnoGrit",
+      "origin": "CN"
+    },
+    "Brite_Semi": {
+      "color": "#74b9ff",
+      "cat": "foundry",
+      "full": "Brite Semiconductor",
+      "origin": "CN"
+    },
+    "HLMC": {
+      "color": "#55efc4",
+      "cat": "foundry",
+      "full": "HLMC (Huali)",
+      "origin": "CN"
+    },
+    "SiGe_Semi": {
+      "color": "#b2dfdb",
+      "cat": "foundry",
+      "full": "SiGe Semiconductor",
+      "origin": "US"
+    },
+    "Atomica": {
+      "color": "#f8bbd0",
+      "cat": "foundry",
+      "full": "Atomica (MEMS)",
+      "origin": "DE"
+    },
+    "Teledyne": {
+      "color": "#fff9c4",
+      "cat": "foundry",
+      "full": "Teledyne DALSA",
+      "origin": "CA"
+    },
+    "CMC_Micro": {
+      "color": "#dcedc8",
+      "cat": "foundry",
+      "full": "CMC Microsystems",
+      "origin": "CA"
+    },
+    "SkyWater": {
+      "color": "#b3e5fc",
+      "cat": "foundry",
+      "full": "SkyWater Technology",
+      "origin": "US"
+    },
+    "Sanken": {
+      "color": "#ffe082",
+      "cat": "foundry",
+      "full": "Sanken Electric",
+      "origin": "JP"
+    },
+    "Lapis_Semi": {
+      "color": "#ffccbc",
+      "cat": "foundry",
+      "full": "LAPIS Semiconductor",
+      "origin": "JP"
+    },
+    "Seiko_Epson": {
+      "color": "#d7ccc8",
+      "cat": "foundry",
+      "full": "Seiko Epson Semi",
+      "origin": "JP"
+    },
+    "Marvell_Fab": {
+      "color": "#c5cae9",
+      "cat": "foundry",
+      "full": "Marvell (fabless\u2192JV)",
+      "origin": "US"
+    },
+    "TSMC_Nanjing": {
+      "color": "#00c9d4",
+      "cat": "foundry",
+      "full": "TSMC Nanjing",
+      "origin": "CN"
+    },
+    "Hua_Hong_SH": {
+      "color": "#d4a017",
+      "cat": "foundry",
+      "full": "Hua Hong Semi Shanghai",
+      "origin": "CN"
+    },
+    "SMIC_TJ": {
+      "color": "#c9b14b",
+      "cat": "foundry",
+      "full": "SMIC Tianjin",
+      "origin": "CN"
     }
   },
   "coords": {
@@ -800,5 +1400,91 @@
       "CXMT HBM dev begins",
       "Global fab count peaks"
     ]
+  },
+  "fab_count_by_country": {
+    "2020": {
+      "China": 42,
+      "Taiwan": 38,
+      "South Korea": 22,
+      "USA": 18,
+      "Japan": 16,
+      "Europe": 12,
+      "Singapore": 4,
+      "Israel": 2,
+      "Malaysia": 3,
+      "Other": 5
+    },
+    "2021": {
+      "China": 46,
+      "Taiwan": 39,
+      "South Korea": 23,
+      "USA": 19,
+      "Japan": 16,
+      "Europe": 12,
+      "Singapore": 4,
+      "Israel": 2,
+      "Malaysia": 3,
+      "Other": 5
+    },
+    "2022": {
+      "China": 51,
+      "Taiwan": 40,
+      "South Korea": 24,
+      "USA": 20,
+      "Japan": 17,
+      "Europe": 13,
+      "Singapore": 5,
+      "Israel": 2,
+      "Malaysia": 3,
+      "Other": 6
+    },
+    "2023": {
+      "China": 58,
+      "Taiwan": 41,
+      "South Korea": 24,
+      "USA": 21,
+      "Japan": 18,
+      "Europe": 13,
+      "Singapore": 5,
+      "Israel": 2,
+      "Malaysia": 4,
+      "Other": 6
+    },
+    "2024": {
+      "China": 64,
+      "Taiwan": 43,
+      "South Korea": 25,
+      "USA": 24,
+      "Japan": 20,
+      "Europe": 15,
+      "Singapore": 5,
+      "Israel": 2,
+      "Malaysia": 4,
+      "Other": 7
+    },
+    "2025": {
+      "China": 70,
+      "Taiwan": 45,
+      "South Korea": 26,
+      "USA": 27,
+      "Japan": 22,
+      "Europe": 16,
+      "Singapore": 6,
+      "Israel": 2,
+      "Malaysia": 4,
+      "Other": 8
+    },
+    "2026": {
+      "China": 75,
+      "Taiwan": 47,
+      "South Korea": 27,
+      "USA": 30,
+      "Japan": 23,
+      "Europe": 18,
+      "Singapore": 6,
+      "Israel": 3,
+      "Malaysia": 5,
+      "Other": 9
+    }
   }
 }
