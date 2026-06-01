@@ -7,26 +7,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0e1a; --panel: #0f1526; --border: #1e2d4a;
-    --text: #e2e8f7; --muted: #6b7fa8;
-    --accent: #00d4ff; --accent2: #ff6b35; --accent3: #00ff88;
+    --bg:#0a0e1a; --panel:#0f1526; --border:#1e2d4a;
+    --text:#e2e8f7; --muted:#6b7fa8;
+    --accent:#00d4ff; --accent2:#ff6b35; --accent3:#00ff88;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Syne',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; overflow:hidden; }
+  html { height:100%; }
+  body {
+    font-family:'Syne',sans-serif; background:var(--bg); color:var(--text);
+    min-height:100vh; overflow-y:auto; overflow-x:hidden;
+  }
   body::before {
     content:''; position:fixed; inset:0;
-    background-image:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px);
+    background-image:linear-gradient(rgba(0,212,255,.03) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(0,212,255,.03) 1px,transparent 1px);
     background-size:60px 60px; pointer-events:none; z-index:0;
   }
   .stars { position:fixed; inset:0; pointer-events:none; z-index:0; }
   .star { position:absolute; background:white; border-radius:50%; animation:twinkle var(--d) ease-in-out infinite; opacity:0; }
   @keyframes twinkle { 0%,100%{opacity:0} 50%{opacity:var(--o)} }
 
-  .app { position:relative; z-index:1; display:flex; flex-direction:column; height:100vh; padding:12px; gap:10px; }
+  .app { position:relative; z-index:1; display:flex; flex-direction:column; min-height:100vh; padding:12px; gap:10px; }
 
+  /* HEADER */
   header {
     display:flex; align-items:center; justify-content:space-between; padding:8px 16px;
-    background:rgba(15,21,38,0.9); border:1px solid var(--border); border-radius:8px;
+    background:rgba(15,21,38,.9); border:1px solid var(--border); border-radius:8px;
     backdrop-filter:blur(10px); flex-shrink:0; gap:12px; flex-wrap:wrap;
   }
   .header-left { display:flex; align-items:center; gap:16px; }
@@ -35,52 +41,60 @@
   h1 span { color:var(--accent); }
   .year-display {
     font-family:'Space Mono',monospace; font-size:42px; font-weight:700; color:var(--accent);
-    text-shadow:0 0 30px rgba(0,212,255,.5),0 0 60px rgba(0,212,255,.2);
-    letter-spacing:.05em; line-height:1; transition:all .3s;
+    text-shadow:0 0 30px rgba(0,212,255,.5); letter-spacing:.05em; line-height:1; transition:all .3s;
   }
   .year-display.changing { transform:scale(1.15); color:#fff; }
-
-  .header-right { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-
-  .filter-group { display:flex; gap:4px; }
+  .header-right { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .filter-group { display:flex; gap:3px; }
   .filter-btn {
-    padding:4px 10px; border-radius:20px; border:1px solid var(--border);
+    padding:4px 9px; border-radius:20px; border:1px solid var(--border);
     background:transparent; color:var(--muted); font-family:'Space Mono',monospace;
-    font-size:10px; cursor:pointer; transition:all .2s; letter-spacing:.04em;
+    font-size:10px; cursor:pointer; transition:all .2s;
   }
-  .filter-btn:hover { border-color:var(--accent2); color:var(--accent2); }
-  .filter-btn.active { background:rgba(255,107,53,.15); border-color:var(--accent2); color:var(--accent2); font-weight:700; }
-
-  .cat-btn:hover { border-color:var(--accent); color:var(--accent); }
-  .cat-btn.active { background:rgba(0,212,255,.1); border-color:var(--accent); color:var(--accent); }
-  .cat-btn.memory.active { background:rgba(108,92,231,.2); border-color:#6c5ce7; color:#6c5ce7; }
-  .cat-btn.osat.active { background:rgba(0,255,136,.1); border-color:var(--accent3); color:var(--accent3); }
-
+  .filter-btn:hover,.filter-btn.active { border-color:var(--accent2); color:var(--accent2); background:rgba(255,107,53,.1); }
+  .cat-btn:hover,.cat-btn.active { border-color:var(--accent); color:var(--accent); background:rgba(0,212,255,.1); }
+  .cat-btn.memory.active { border-color:#6c5ce7; color:#6c5ce7; background:rgba(108,92,231,.2); }
+  .cat-btn.osat.active   { border-color:var(--accent3); color:var(--accent3); background:rgba(0,255,136,.1); }
   .admin-link {
     padding:5px 12px; border-radius:6px; border:1px solid var(--accent2);
     background:rgba(255,107,53,.1); color:var(--accent2); font-family:'Space Mono',monospace;
     font-size:10px; cursor:pointer; text-decoration:none; transition:all .2s;
   }
-  .admin-link:hover { background:rgba(255,107,53,.2); }
+  .admin-link:hover { background:rgba(255,107,53,.25); }
 
-  .main { display:flex; gap:10px; flex:1; overflow:hidden; min-height:0; }
+  /* MAIN MAP SECTION */
+  .main { display:flex; gap:10px; height:72vh; min-height:500px; }
 
+  /* SIDEBAR */
   .sidebar {
-    width:190px; flex-shrink:0; background:rgba(15,21,38,.9); border:1px solid var(--border);
-    border-radius:8px; padding:12px; display:flex; flex-direction:column; gap:8px;
+    width:200px; flex-shrink:0; background:rgba(15,21,38,.9); border:1px solid var(--border);
+    border-radius:8px; padding:10px; display:flex; flex-direction:column; gap:6px;
     overflow-y:auto; backdrop-filter:blur(10px);
   }
-  .sidebar-title {
-    font-family:'Space Mono',monospace; font-size:9px; color:var(--accent2);
-    letter-spacing:.2em; text-transform:uppercase; margin-bottom:6px;
-    padding-bottom:4px; border-bottom:1px solid var(--border);
+  .sidebar-search {
+    width:100%; background:rgba(255,255,255,.04); border:1px solid var(--border);
+    border-radius:5px; color:var(--text); padding:5px 8px; font-size:11px;
+    font-family:'Syne',sans-serif; margin-bottom:4px; flex-shrink:0;
   }
-  .legend-item { display:flex; align-items:center; gap:8px; padding:3px 6px; border-radius:4px; transition:all .2s; }
-  .legend-item.dimmed { opacity:.3; }
-  .legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
-  .legend-name { font-weight:600; font-size:11px; }
-  .legend-sub { font-size:9px; color:var(--muted); font-family:'Space Mono',monospace; }
+  .sidebar-search:focus { outline:none; border-color:var(--accent); }
+  .sidebar-section { flex-shrink:0; }
+  .sidebar-title {
+    font-family:'Space Mono',monospace; font-size:8px; color:var(--accent2);
+    letter-spacing:.2em; text-transform:uppercase; margin-bottom:4px;
+    padding-bottom:3px; border-bottom:1px solid var(--border); position:sticky; top:0;
+    background:rgba(15,21,38,.95); z-index:1;
+  }
+  .legend-item {
+    display:flex; align-items:center; gap:6px; padding:2px 4px; border-radius:3px;
+    transition:opacity .2s; font-size:11px;
+  }
+  .legend-item.dimmed { opacity:.25; }
+  .legend-item.hidden { display:none; }
+  .legend-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .legend-name { font-weight:600; font-size:10px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .legend-sub  { font-size:9px; color:var(--muted); font-family:'Space Mono',monospace; flex-shrink:0; }
 
+  /* MAP */
   .map-container {
     flex:1; position:relative; background:rgba(15,21,38,.9); border:1px solid var(--border);
     border-radius:8px; overflow:hidden;
@@ -92,7 +106,6 @@
   }
   #map { width:100%; height:100%; transition:all .6s cubic-bezier(.4,0,.2,1); }
   .land { fill:#1a2a3a; stroke:#2a3d55; stroke-width:.5; }
-
   .progress-bar {
     position:absolute; top:0; left:0; height:2px; background:var(--accent);
     transition:width .1s linear; box-shadow:0 0 8px var(--accent); z-index:20; border-radius:0 2px 2px 0;
@@ -104,9 +117,8 @@
   }
   .region-label {
     position:absolute; font-family:'Space Mono',monospace; font-size:9px;
-    color:rgba(0,212,255,.25); letter-spacing:.2em; text-transform:uppercase; pointer-events:none;
+    color:rgba(0,212,255,.2); letter-spacing:.2em; text-transform:uppercase; pointer-events:none;
   }
-
   .fab-marker { position:absolute; transform:translate(-50%,-50%); cursor:pointer; z-index:10; }
   @keyframes markerEnter { from{transform:translate(-50%,-50%) scale(0);opacity:0} to{transform:translate(-50%,-50%) scale(1);opacity:1} }
   @keyframes markerExit  { from{transform:translate(-50%,-50%) scale(1);opacity:1} to{transform:translate(-50%,-50%) scale(0);opacity:0} }
@@ -135,7 +147,8 @@
     white-space:nowrap; opacity:.8;
   }
 
-  .right-panel { width:210px; flex-shrink:0; display:flex; flex-direction:column; gap:8px; }
+  /* RIGHT PANEL */
+  .right-panel { width:200px; flex-shrink:0; display:flex; flex-direction:column; gap:8px; }
   .stats-box {
     background:rgba(15,21,38,.9); border:1px solid var(--border); border-radius:8px;
     padding:12px; backdrop-filter:blur(10px);
@@ -143,14 +156,15 @@
   .stats-title { font-family:'Space Mono',monospace; font-size:9px; color:var(--accent2); letter-spacing:.2em; text-transform:uppercase; margin-bottom:10px; }
   .stat-row { display:flex; justify-content:space-between; align-items:center; padding:4px 0; border-bottom:1px solid rgba(255,255,255,.04); font-size:11px; }
   .stat-row:last-child { border-bottom:none; }
-  .stat-label { color:var(--muted); font-family:'Space Mono',monospace; }
+  .stat-label { color:var(--muted); font-family:'Space Mono',monospace; font-size:10px; }
   .stat-val { font-weight:700; color:var(--accent); font-family:'Space Mono',monospace; }
-  .node-timeline { flex:1; overflow-y:auto; }
-  .node-entry { padding:6px 0; border-bottom:1px solid rgba(255,255,255,.04); }
+  .node-timeline { flex:1; overflow-y:auto; min-height:0; }
+  .node-entry { padding:5px 0; border-bottom:1px solid rgba(255,255,255,.04); }
   .node-entry:last-child { border-bottom:none; }
-  .node-company { font-size:11px; font-weight:700; margin-bottom:2px; }
-  .node-info { font-size:10px; color:var(--muted); font-family:'Space Mono',monospace; }
+  .node-company { font-size:10px; font-weight:700; margin-bottom:1px; }
+  .node-info { font-size:9px; color:var(--muted); font-family:'Space Mono',monospace; }
 
+  /* CONTROLS */
   .controls {
     background:rgba(15,21,38,.9); border:1px solid var(--border); border-radius:8px;
     padding:10px 16px; display:flex; align-items:center; gap:16px; flex-shrink:0;
@@ -163,19 +177,95 @@
   .year-btn:first-child { border-radius:6px 0 0 6px; }
   .year-btn:last-child  { border-radius:0 6px 6px 0; }
   .year-btn:not(:first-child) { border-left:none; }
-  .year-btn:hover { background:rgba(0,212,255,.08); color:var(--accent); }
+  .year-btn:hover  { background:rgba(0,212,255,.08); color:var(--accent); }
   .year-btn.active { background:rgba(0,212,255,.15); color:var(--accent); border-color:var(--accent); font-weight:700; z-index:1; }
   .play-btn {
     width:42px; height:42px; border-radius:50%; background:var(--accent); border:none;
     color:var(--bg); font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center;
     transition:all .2s; flex-shrink:0; box-shadow:0 0 20px rgba(0,212,255,.3);
   }
-  .play-btn:hover { transform:scale(1.1); box-shadow:0 0 30px rgba(0,212,255,.5); }
+  .play-btn:hover { transform:scale(1.1); }
 
+  /* ═══════════════════════════════════════════════
+     BAR CHART RACE SECTION
+  ═══════════════════════════════════════════════ */
+  .chart-section {
+    background:rgba(15,21,38,.9); border:1px solid var(--border); border-radius:8px;
+    padding:20px 24px; flex-shrink:0;
+  }
+  .chart-header {
+    display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:10px;
+  }
+  .chart-title-group h2 { font-size:16px; font-weight:800; }
+  .chart-title-group h2 span { color:var(--accent); }
+  .chart-title-group p { font-size:11px; color:var(--muted); margin-top:2px; font-family:'Space Mono',monospace; }
+  .chart-year-badge {
+    font-family:'Space Mono',monospace; font-size:32px; font-weight:700; color:var(--accent2);
+    text-shadow:0 0 20px rgba(255,107,53,.4); transition:all .3s;
+  }
+  .chart-year-badge.pop { transform:scale(1.2); color:#fff; }
+  .chart-controls { display:flex; gap:8px; align-items:center; }
+  .chart-play-btn {
+    width:36px; height:36px; border-radius:50%; background:var(--accent2); border:none;
+    color:var(--bg); font-size:14px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:all .2s; box-shadow:0 0 14px rgba(255,107,53,.3);
+  }
+  .chart-play-btn:hover { transform:scale(1.1); }
+  .chart-speed {
+    background:transparent; border:1px solid var(--border); border-radius:4px;
+    color:var(--muted); font-family:'Space Mono',monospace; font-size:10px; padding:4px 8px; cursor:pointer;
+  }
+  .chart-speed:hover { border-color:var(--accent2); color:var(--accent2); }
+
+  .chart-area { position:relative; }
+  .chart-bars { display:flex; flex-direction:column; gap:6px; }
+
+  .bar-row {
+    display:flex; align-items:center; gap:10px;
+    transition:transform .5s cubic-bezier(.4,0,.2,1);
+  }
+  .bar-rank {
+    width:22px; text-align:right; font-family:'Space Mono',monospace;
+    font-size:10px; color:var(--muted); flex-shrink:0;
+  }
+  .bar-country {
+    width:100px; font-size:12px; font-weight:700; flex-shrink:0;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .bar-track {
+    flex:1; height:32px; background:rgba(255,255,255,.04);
+    border-radius:4px; overflow:hidden; position:relative;
+  }
+  .bar-fill {
+    height:100%; border-radius:4px;
+    transition:width .8s cubic-bezier(.4,0,.2,1);
+    position:relative; display:flex; align-items:center;
+    min-width:2px;
+  }
+  .bar-fill::after {
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(90deg,transparent 60%,rgba(255,255,255,.15));
+    border-radius:4px;
+  }
+  .bar-value {
+    position:absolute; right:8px; top:50%; transform:translateY(-50%);
+    font-family:'Space Mono',monospace; font-size:11px; font-weight:700;
+    color:rgba(255,255,255,.9); text-shadow:0 1px 3px rgba(0,0,0,.5);
+    z-index:1;
+  }
+  .bar-flag { font-size:16px; flex-shrink:0; }
+
+  .chart-legend {
+    display:flex; gap:16px; margin-top:14px; flex-wrap:wrap; justify-content:center;
+  }
+  .chart-legend-item { display:flex; align-items:center; gap:6px; font-size:11px; }
+  .chart-legend-dot { width:10px; height:10px; border-radius:2px; }
+
+  /* TOOLTIP */
   .tooltip {
     position:fixed; background:rgba(10,14,26,.97); border:1px solid var(--accent);
     border-radius:8px; padding:10px 14px; font-size:12px; pointer-events:none;
-    z-index:100; opacity:0; transition:opacity .2s; min-width:160px; backdrop-filter:blur(10px);
+    z-index:200; opacity:0; transition:opacity .2s; min-width:160px;
   }
   .tooltip.show { opacity:1; }
   .tooltip-company { font-weight:800; font-size:13px; margin-bottom:4px; }
@@ -183,19 +273,19 @@
   .tooltip-node { color:var(--accent); font-family:'Space Mono',monospace; font-size:11px; font-weight:700; }
   .tooltip-type { font-size:10px; margin-top:4px; }
 
-  ::-webkit-scrollbar { width:4px; }
-  ::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
-
+  /* LOADING */
   #loadingOverlay {
     position:fixed; inset:0; background:var(--bg); z-index:999;
-    display:flex; align-items:center; justify-content:center;
-    flex-direction:column; gap:16px; transition:opacity .5s;
+    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:16px; transition:opacity .5s;
   }
   #loadingOverlay.hide { opacity:0; pointer-events:none; }
   .loading-text { font-family:'Space Mono',monospace; color:var(--accent); font-size:13px; letter-spacing:.2em; }
   .loading-bar { width:200px; height:2px; background:var(--border); border-radius:2px; overflow:hidden; }
   .loading-fill { height:100%; background:var(--accent); animation:loadFill 1s ease forwards; box-shadow:0 0 8px var(--accent); }
   @keyframes loadFill { from{width:0} to{width:100%} }
+
+  ::-webkit-scrollbar { width:4px; }
+  ::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
 </style>
 </head>
 <body>
@@ -208,6 +298,7 @@
 <div class="stars" id="stars"></div>
 
 <div class="app">
+  <!-- HEADER -->
   <header>
     <div class="header-left">
       <div class="logo">JL Advisory</div>
@@ -215,14 +306,12 @@
     </div>
     <div class="year-display" id="yearDisplay">—</div>
     <div class="header-right">
-      <!-- Region zoom -->
       <div class="filter-group">
         <button class="filter-btn active" id="rzoom-all"      onclick="setRegion('all')">🌍 World</button>
         <button class="filter-btn"        id="rzoom-americas" onclick="setRegion('americas')">Americas</button>
-        <button class="filter-btn"        id="rzoom-europe"   onclick="setRegion('europe')">Europe / ME</button>
-        <button class="filter-btn"        id="rzoom-asia"     onclick="setRegion('asia')">Asia Pacific</button>
+        <button class="filter-btn"        id="rzoom-europe"   onclick="setRegion('europe')">Europe/ME</button>
+        <button class="filter-btn"        id="rzoom-asia"     onclick="setRegion('asia')">Asia Pac</button>
       </div>
-      <!-- Category -->
       <div class="filter-group">
         <button class="filter-btn cat-btn foundry active" onclick="toggleCat('foundry')">Foundry</button>
         <button class="filter-btn cat-btn memory  active" onclick="toggleCat('memory')">Memory</button>
@@ -232,9 +321,15 @@
     </div>
   </header>
 
+  <!-- MAP SECTION -->
   <div class="main">
-    <div class="sidebar" id="sidebar"></div>
+    <!-- Sidebar with search -->
+    <div class="sidebar">
+      <input class="sidebar-search" type="text" placeholder="🔍 Search companies…" oninput="filterSidebar(this.value)" id="sidebarSearch">
+      <div id="sidebarContent"></div>
+    </div>
 
+    <!-- Map -->
     <div class="map-container">
       <div class="progress-bar" id="progressBar" style="width:0%"></div>
       <div class="count-badge" id="countBadge">Loading…</div>
@@ -256,8 +351,8 @@
           <ellipse class="land" cx="840" cy="155" rx="10" ry="15"/>
           <path class="land" d="M 760 280 L 820 265 L 875 270 L 910 290 L 920 320 L 910 350 L 885 370 L 850 375 L 815 365 L 785 345 L 768 320 L 762 295 Z"/>
           <ellipse class="land" cx="755" cy="190" rx="8" ry="6"/>
-          <line x1="0" y1="250" x2="1000" y2="250" stroke="rgba(0,212,255,0.06)" stroke-width="1" stroke-dasharray="4,8"/>
-          <line x1="500" y1="0" x2="500" y2="500" stroke="rgba(0,212,255,0.06)" stroke-width="1" stroke-dasharray="4,8"/>
+          <line x1="0" y1="250" x2="1000" y2="250" stroke="rgba(0,212,255,0.05)" stroke-width="1" stroke-dasharray="4,8"/>
+          <line x1="500" y1="0" x2="500" y2="500" stroke="rgba(0,212,255,0.05)" stroke-width="1" stroke-dasharray="4,8"/>
         </svg>
         <div class="region-label" style="left:8%;top:30%">Americas</div>
         <div class="region-label" style="left:42%;top:12%">Europe / ME</div>
@@ -266,6 +361,7 @@
       </div>
     </div>
 
+    <!-- Right stats panel -->
     <div class="right-panel">
       <div class="stats-box">
         <div class="stats-title">Year Stats</div>
@@ -283,12 +379,38 @@
     </div>
   </div>
 
+  <!-- MAP CONTROLS -->
   <div class="controls">
     <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
     <div class="year-track" id="yearTrack"></div>
     <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--muted)">Click year or ▶ to animate</div>
   </div>
-</div>
+
+  <!-- ═══════════════════════════════════════════
+       BAR CHART RACE — COUNTRY FAB COUNT
+  ═══════════════════════════════════════════ -->
+  <div class="chart-section">
+    <div class="chart-header">
+      <div class="chart-title-group">
+        <h2>Country <span>Fab Count</span> Race</h2>
+        <p>Number of active semiconductor fabs by country · 2020–2026</p>
+      </div>
+      <div class="chart-year-badge" id="chartYearBadge">2020</div>
+      <div class="chart-controls">
+        <select class="chart-speed" id="chartSpeed">
+          <option value="1800">Slow</option>
+          <option value="1200" selected>Normal</option>
+          <option value="700">Fast</option>
+        </select>
+        <button class="chart-play-btn" id="chartPlayBtn" onclick="toggleChartPlay()">▶</button>
+      </div>
+    </div>
+    <div class="chart-area">
+      <div class="chart-bars" id="chartBars"></div>
+    </div>
+  </div>
+
+</div><!-- end .app -->
 
 <div class="tooltip" id="tooltip">
   <div class="tooltip-company" id="tt-company"></div>
@@ -298,195 +420,220 @@
 </div>
 
 <script>
+// ─────────────────────────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────────────────────────
 let DB = null;
 let currentYear = 2020;
 let currentRegion = 'all';
-let activeCats = { foundry: true, memory: true, osat: true };
+let activeCats = { foundry:true, memory:true, osat:true };
 let playInterval = null;
 let isPlaying = false;
 
+// Chart race state
+let chartYear = 2020;
+let chartPlayInterval = null;
+let isChartPlaying = false;
+
 const REGION_VIEWS = {
-  all:      '0 0 1000 500',
-  americas: '30 55 230 230',
-  europe:   '400 10 250 170',
-  asia:     '630 10 320 260',
+  all:'0 0 1000 500', americas:'30 55 230 230', europe:'400 10 250 170', asia:'630 10 320 260'
 };
 const REGION_BOUNDS = {
-  all:      { x1:0,  x2:100, y1:0,  y2:100 },
-  americas: { x1:3,  x2:26,  y1:11, y2:57  },
-  europe:   { x1:40, x2:65,  y1:2,  y2:36  },
-  asia:     { x1:63, x2:95,  y1:2,  y2:54  },
+  all:{x1:0,x2:100,y1:0,y2:100}, americas:{x1:3,x2:26,y1:11,y2:57},
+  europe:{x1:40,x2:65,y1:2,y2:36}, asia:{x1:63,x2:95,y1:2,y2:54}
 };
 const REGION_LOC = {
-  all:      () => true,
-  americas: l => ['Oregon','Arizona','Boise','Malta','Chaska','Purdue','Taylor'].some(k=>l.startsWith(k)),
-  europe:   l => ['Dresden','Crolles','Magdeburg','Kiryat'].some(k=>l.startsWith(k)),
-  asia:     l => ['Taiwan','Tainan','Hsinchu','Kaohsiung','Hwaseong','Icheon','Cheongju','Kumamoto','Hiroshima','Saijo','Beijing','Shanghai','Shenzhen','HeJian','Wuhan','Hefei','Chengdu','Wuxi','Singapore','China'].some(k=>l.startsWith(k)),
+  all:()=>true,
+  americas:l=>['Oregon','Arizona','Boise','Malta','Chaska','Purdue','Taylor'].some(k=>l.startsWith(k)),
+  europe:l=>['Dresden','Crolles','Magdeburg','Kiryat'].some(k=>l.startsWith(k)),
+  asia:l=>['Taiwan','Tainan','Hsinchu','Kaohsiung','Hwaseong','Icheon','Cheongju','Kumamoto','Hiroshima','Saijo','Beijing','Shanghai','Shenzhen','HeJian','Wuhan','Hefei','Singapore','China'].some(k=>l.startsWith(k)),
 };
 
-// ── bootstrap ────────────────────────────────────────────────────────────────
+const COUNTRY_FLAGS = {
+  'China':'🇨🇳','Taiwan':'🇹🇼','South Korea':'🇰🇷','USA':'🇺🇸',
+  'Japan':'🇯🇵','Europe':'🇪🇺','Singapore':'🇸🇬','Israel':'🇮🇱',
+  'Malaysia':'🇲🇾','Other':'🌐'
+};
+const COUNTRY_COLORS = {
+  'China':'#e17055','Taiwan':'#00d4ff','South Korea':'#6c5ce7','USA':'#0094fb',
+  'Japan':'#fd79a8','Europe':'#2ecc71','Singapore':'#f39c12','Israel':'#fdcb6e',
+  'Malaysia':'#55efc4','Other':'#b2bec3'
+};
+
+// ─────────────────────────────────────────────────────────────────
+// BOOT
+// ─────────────────────────────────────────────────────────────────
 async function boot() {
   createStars();
   const res = await fetch('/api/data');
   DB = await res.json();
-  buildLegend();
+  buildSidebar();
   buildYearButtons();
   renderYear(currentYear);
+  renderChart(2020);
   document.getElementById('loadingOverlay').classList.add('hide');
 }
 
-// ── stars ─────────────────────────────────────────────────────────────────────
 function createStars() {
   const c = document.getElementById('stars');
-  for (let i = 0; i < 80; i++) {
-    const s = document.createElement('div'); s.className = 'star';
-    const sz = Math.random()*2+.5;
-    s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;--d:${2+Math.random()*4}s;--o:${.3+Math.random()*.5};animation-delay:${Math.random()*4}s`;
+  for (let i=0;i<80;i++) {
+    const s=document.createElement('div'); s.className='star';
+    const sz=Math.random()*2+.5;
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;--d:${2+Math.random()*4}s;--o:${.3+Math.random()*.5};animation-delay:${Math.random()*4}s`;
     c.appendChild(s);
   }
 }
 
-// ── legend ────────────────────────────────────────────────────────────────────
-function buildLegend() {
-  const sidebar = document.getElementById('sidebar');
-  sidebar.innerHTML = '';
-  const cats = { foundry: [], memory: [], osat: [] };
-  for (const [id, c] of Object.entries(DB.companies)) cats[c.cat]?.push([id, c]);
+// ─────────────────────────────────────────────────────────────────
+// SIDEBAR — full company list with search
+// ─────────────────────────────────────────────────────────────────
+function buildSidebar() {
+  const container = document.getElementById('sidebarContent');
+  container.innerHTML = '';
+  const cats = { foundry:[], memory:[], osat:[] };
+  for (const [id,c] of Object.entries(DB.companies)) {
+    if (cats[c.cat]) cats[c.cat].push([id,c]);
+  }
+  // Sort each category alphabetically by full name
+  for (const cat of Object.keys(cats)) {
+    cats[cat].sort((a,b)=>a[1].full.localeCompare(b[1].full));
+  }
   for (const [cat, items] of Object.entries(cats)) {
     if (!items.length) continue;
     const sec = document.createElement('div');
-    sec.innerHTML = `<div class="sidebar-title">${cat.charAt(0).toUpperCase()+cat.slice(1)}</div>`;
-    items.forEach(([id, c]) => {
-      const d = document.createElement('div');
-      d.className = 'legend-item'; d.id = `leg-${id}`;
-      d.innerHTML = `<div class="legend-dot" style="background:${c.color};box-shadow:0 0 6px ${c.color}40;"></div>
-        <div><div class="legend-name">${c.full}</div><div class="legend-sub">${c.origin}</div></div>`;
+    sec.className = 'sidebar-section';
+    sec.innerHTML = `<div class="sidebar-title">${cat.charAt(0).toUpperCase()+cat.slice(1)} (${items.length})</div>`;
+    items.forEach(([id,c]) => {
+      const d=document.createElement('div');
+      d.className='legend-item'; d.id=`leg-${id}`;
+      d.dataset.name=(c.full+' '+id+' '+c.origin).toLowerCase();
+      d.innerHTML=`<div class="legend-dot" style="background:${c.color};box-shadow:0 0 4px ${c.color}60;"></div>
+        <span class="legend-name" title="${c.full}">${c.full}</span>
+        <span class="legend-sub">${c.origin}</span>`;
       sec.appendChild(d);
     });
-    sidebar.appendChild(sec);
+    container.appendChild(sec);
   }
 }
 
-// ── year buttons ──────────────────────────────────────────────────────────────
+function filterSidebar(q) {
+  const query = q.toLowerCase();
+  document.querySelectorAll('.legend-item').forEach(el => {
+    el.classList.toggle('hidden', query.length > 0 && !el.dataset.name.includes(query));
+  });
+}
+
+// ─────────────────────────────────────────────────────────────────
+// YEAR BUTTONS
+// ─────────────────────────────────────────────────────────────────
 function buildYearButtons() {
   const years = getYears();
   const track = document.getElementById('yearTrack');
   track.innerHTML = '';
   years.forEach(y => {
-    const btn = document.createElement('button');
-    btn.className = 'year-btn' + (y === currentYear ? ' active' : '');
-    btn.textContent = y; btn.id = `ybtn-${y}`;
-    btn.onclick = () => setYear(y);
+    const btn=document.createElement('button');
+    btn.className='year-btn'+(y===currentYear?' active':'');
+    btn.textContent=y; btn.id=`ybtn-${y}`;
+    btn.onclick=()=>setYear(y);
     track.appendChild(btn);
   });
 }
 
 function getYears() {
-  const ys = new Set();
-  DB.fabs.forEach(f => Object.keys(f.years).forEach(y => ys.add(parseInt(y))));
+  const ys=new Set();
+  DB.fabs.forEach(f=>Object.keys(f.years).forEach(y=>ys.add(parseInt(y))));
   return Array.from(ys).sort();
 }
 
-// ── year change ───────────────────────────────────────────────────────────────
 function setYear(year) {
-  const prev = currentYear;
-  currentYear = year;
-  const yd = document.getElementById('yearDisplay');
-  yd.classList.add('changing'); yd.textContent = year;
-  setTimeout(() => yd.classList.remove('changing'), 300);
-  getYears().forEach(y => document.getElementById(`ybtn-${y}`)?.classList.toggle('active', y===year));
-  const years = getYears();
-  document.getElementById('progressBar').style.width = `${(years.indexOf(year)/(years.length-1))*100}%`;
-  renderYear(year, prev);
+  const prev=currentYear; currentYear=year;
+  const yd=document.getElementById('yearDisplay');
+  yd.classList.add('changing'); yd.textContent=year;
+  setTimeout(()=>yd.classList.remove('changing'),300);
+  getYears().forEach(y=>document.getElementById(`ybtn-${y}`)?.classList.toggle('active',y===year));
+  const years=getYears();
+  document.getElementById('progressBar').style.width=`${(years.indexOf(year)/(years.length-1))*100}%`;
+  renderYear(year,prev);
 }
 
-// ── render ────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────
+// MAP RENDER
+// ─────────────────────────────────────────────────────────────────
 function toZoomed(coords) {
-  if (currentRegion === 'all') return coords;
-  const b = REGION_BOUNDS[currentRegion];
+  if (currentRegion==='all') return coords;
+  const b=REGION_BOUNDS[currentRegion];
   return [
-    Math.max(-5, Math.min(105, ((coords[0]-b.x1)/(b.x2-b.x1))*100)),
-    Math.max(-5, Math.min(105, ((coords[1]-b.y1)/(b.y2-b.y1))*100)),
+    Math.max(-5,Math.min(105,((coords[0]-b.x1)/(b.x2-b.x1))*100)),
+    Math.max(-5,Math.min(105,((coords[1]-b.y1)/(b.y2-b.y1))*100))
   ];
 }
 
-function renderYear(year, prevYear) {
-  const layer = document.getElementById('fabLayer');
-  const activeFabs = DB.fabs.filter(f => f.years[year] && activeCats[DB.companies[f.company]?.cat]);
-  const prevIds = prevYear ? DB.fabs.filter(f=>f.years[prevYear]&&activeCats[DB.companies[f.company]?.cat]).map(f=>f.id) : [];
+function renderYear(year,prevYear) {
+  const layer=document.getElementById('fabLayer');
+  const activeFabs=DB.fabs.filter(f=>f.years[year]&&activeCats[DB.companies[f.company]?.cat]);
+  const prevIds=prevYear?DB.fabs.filter(f=>f.years[prevYear]&&activeCats[DB.companies[f.company]?.cat]).map(f=>f.id):[];
 
-  // Remove exited fabs
-  layer.querySelectorAll('.fab-marker').forEach(el => {
+  layer.querySelectorAll('.fab-marker').forEach(el=>{
     if (!activeFabs.find(f=>f.id===el.dataset.fabId)) {
-      el.classList.add('exiting');
-      setTimeout(()=>el.remove(), 300);
+      el.classList.add('exiting'); setTimeout(()=>el.remove(),300);
     }
   });
-
-  // Show/hide by region
-  layer.querySelectorAll('.fab-marker').forEach(el => {
-    const fab = DB.fabs.find(f=>f.id===el.dataset.fabId);
-    el.style.display = fab && REGION_LOC[currentRegion](fab.loc) ? '' : 'none';
+  layer.querySelectorAll('.fab-marker').forEach(el=>{
+    const fab=DB.fabs.find(f=>f.id===el.dataset.fabId);
+    el.style.display=fab&&REGION_LOC[currentRegion](fab.loc)?'':'none';
   });
 
-  // Add/update
-  const zoomScale = currentRegion === 'all' ? 1 : 1.8;
-  activeFabs.filter(f=>REGION_LOC[currentRegion](f.loc)).forEach(fab => {
-    const raw = DB.coords[fab.loc]; if (!raw) return;
-    const pos = toZoomed(raw);
-    const co = DB.companies[fab.company]; if (!co) return;
-    const node = fab.years[year];
-    const isNew = !prevIds.includes(fab.id);
-    const dotSize = (co.cat==='foundry'?14:co.cat==='memory'?12:10)*zoomScale;
-    const fsize   = currentRegion==='all'?7:9;
-
-    let el = layer.querySelector(`[data-fab-id="${fab.id}"]`);
+  const zs=currentRegion==='all'?1:1.8;
+  activeFabs.filter(f=>REGION_LOC[currentRegion](f.loc)).forEach(fab=>{
+    const raw=DB.coords[fab.loc]; if(!raw) return;
+    const pos=toZoomed(raw);
+    const co=DB.companies[fab.company]; if(!co) return;
+    const node=fab.years[year];
+    const isNew=!prevIds.includes(fab.id);
+    const ds=(co.cat==='foundry'?14:co.cat==='memory'?12:10)*zs;
+    const fs=currentRegion==='all'?7:9;
+    let el=layer.querySelector(`[data-fab-id="${fab.id}"]`);
     if (!el) {
-      el = document.createElement('div'); el.className='fab-marker'; el.dataset.fabId=fab.id;
+      el=document.createElement('div'); el.className='fab-marker'; el.dataset.fabId=fab.id;
       layer.appendChild(el);
-      if (prevYear!==undefined) { el.classList.add('entering'); setTimeout(()=>el.classList.remove('entering'),500); }
+      if(prevYear!==undefined){el.classList.add('entering');setTimeout(()=>el.classList.remove('entering'),500);}
     }
     el.style.display=''; el.style.left=`${pos[0]}%`; el.style.top=`${pos[1]}%`;
     el.innerHTML=`
-      <div class="fab-dot" style="background:${co.color}30;border-color:${co.color};color:${co.color};width:${dotSize}px;height:${dotSize}px;box-shadow:0 0 8px ${co.color}60;">
+      <div class="fab-dot" style="background:${co.color}30;border-color:${co.color};color:${co.color};width:${ds}px;height:${ds}px;box-shadow:0 0 8px ${co.color}60;">
         ${isNew&&prevYear?`<div style="position:absolute;inset:-3px;border-radius:50%;border:1px dashed ${co.color};animation:pulse 1s ease-in-out 3;"></div>`:''}
       </div>
       <div class="fab-label" style="border-color:${co.color}40;">
         <span style="color:${co.color};font-weight:700;">${fab.name}</span><br>
         <span style="color:#a0aec0;">${node}</span>
       </div>
-      <div class="fab-node" style="color:${co.color};font-size:${fsize}px;">${node.split('/')[0]}</div>`;
+      <div class="fab-node" style="color:${co.color};font-size:${fs}px;">${node.split('/')[0]}</div>`;
     el.onmouseenter=e=>showTip(e,fab,co,node);
     el.onmousemove=e=>moveTip(e);
     el.onmouseleave=hideTip;
   });
 
-  updateStats(year, activeFabs, prevIds);
+  updateStats(year,activeFabs,prevIds);
   updateMilestones(year);
   updateLegendDim(activeFabs);
 }
 
-// ── stats & milestones ────────────────────────────────────────────────────────
-function updateStats(year, fabs, prevIds) {
-  const get = cat => fabs.filter(f=>DB.companies[f.company]?.cat===cat).length;
-  document.getElementById('statTotal').textContent   = fabs.length;
-  document.getElementById('statFoundry').textContent = get('foundry');
-  document.getElementById('statMemory').textContent  = get('memory');
-  document.getElementById('statOsat').textContent    = get('osat');
-  const newCount = fabs.filter(f=>!prevIds.includes(f.id)).length;
-  document.getElementById('statNew').textContent = newCount>0?`+${newCount}`:'—';
-  document.getElementById('countBadge').textContent = `${fabs.length} fabs active`;
-  const nodes = ['N2','3nm','4nm','5nm','7nm','10nm','14nm','Intel 3','Intel 4','Intel 18A'];
-  const nodeLabels = {'N2':'2nm','3nm':'3nm','4nm':'4nm','5nm':'5nm','7nm':'7nm','10nm':'10nm','14nm':'14nm','Intel 3':'~3nm','Intel 4':'~4nm','Intel 18A':'~1.8nm'};
-  for (const n of nodes) {
-    if (fabs.some(f=>(f.years[year]||'').includes(n))) { document.getElementById('statLeading').textContent=nodeLabels[n]||n; break; }
-  }
+function updateStats(year,fabs,prevIds) {
+  const get=cat=>fabs.filter(f=>DB.companies[f.company]?.cat===cat).length;
+  document.getElementById('statTotal').textContent=fabs.length;
+  document.getElementById('statFoundry').textContent=get('foundry');
+  document.getElementById('statMemory').textContent=get('memory');
+  document.getElementById('statOsat').textContent=get('osat');
+  document.getElementById('statNew').textContent=fabs.filter(f=>!prevIds.includes(f.id)).length||'—';
+  document.getElementById('countBadge').textContent=`${fabs.length} fabs active`;
+  const nodes=['N2','3nm','4nm','5nm','7nm','10nm','14nm','Intel 3','Intel 4','Intel 18A'];
+  const nl={'N2':'2nm','3nm':'3nm','4nm':'4nm','5nm':'5nm','7nm':'7nm','10nm':'10nm','14nm':'14nm','Intel 3':'~3nm','Intel 4':'~4nm','Intel 18A':'~1.8nm'};
+  for(const n of nodes){if(fabs.some(f=>(f.years[year]||'').includes(n))){document.getElementById('statLeading').textContent=nl[n]||n;break;}}
 }
 
 function updateMilestones(year) {
-  const list = document.getElementById('milestoneList');
-  list.innerHTML = '';
-  (DB.milestones[year]||[]).forEach(m => {
+  const list=document.getElementById('milestoneList'); list.innerHTML='';
+  (DB.milestones[year]||[]).forEach(m=>{
     const d=document.createElement('div'); d.className='node-entry';
     d.innerHTML=`<div class="node-info" style="color:#a0d4ff;">▸ ${m}</div>`;
     list.appendChild(d);
@@ -500,45 +647,116 @@ function updateMilestones(year) {
 }
 
 function updateLegendDim(fabs) {
-  const active = new Set(fabs.map(f=>f.company));
+  const active=new Set(fabs.map(f=>f.company));
   document.querySelectorAll('.legend-item').forEach(el=>{
-    el.classList.toggle('dimmed', !active.has(el.id.replace('leg-','')));
+    if (el.classList.contains('hidden')) return;
+    el.classList.toggle('dimmed',!active.has(el.id.replace('leg-','')));
   });
 }
 
-// ── region zoom ───────────────────────────────────────────────────────────────
 function setRegion(r) {
-  currentRegion = r;
-  document.getElementById('map').setAttribute('viewBox', REGION_VIEWS[r]);
+  currentRegion=r;
+  document.getElementById('map').setAttribute('viewBox',REGION_VIEWS[r]);
   document.querySelectorAll('.filter-btn[id^="rzoom"]').forEach(b=>b.classList.remove('active'));
   document.getElementById(`rzoom-${r}`).classList.add('active');
   renderYear(currentYear);
 }
 
-// ── category toggle ───────────────────────────────────────────────────────────
 function toggleCat(cat) {
-  activeCats[cat] = !activeCats[cat];
-  document.querySelector(`.cat-btn.${cat}`).classList.toggle('active', activeCats[cat]);
+  activeCats[cat]=!activeCats[cat];
+  document.querySelector(`.cat-btn.${cat}`).classList.toggle('active',activeCats[cat]);
   renderYear(currentYear);
 }
 
-// ── playback ──────────────────────────────────────────────────────────────────
 function togglePlay() {
-  isPlaying = !isPlaying;
-  document.getElementById('playBtn').textContent = isPlaying ? '⏸' : '▶';
-  if (isPlaying) {
-    const years = getYears();
-    if (currentYear === years[years.length-1]) setYear(years[0]);
-    playInterval = setInterval(() => {
-      const years = getYears(), idx = years.indexOf(currentYear);
-      if (idx < years.length-1) setYear(years[idx+1]);
-      else togglePlay();
-    }, 1800);
+  isPlaying=!isPlaying;
+  document.getElementById('playBtn').textContent=isPlaying?'⏸':'▶';
+  if(isPlaying){
+    const years=getYears();
+    if(currentYear===years[years.length-1]) setYear(years[0]);
+    playInterval=setInterval(()=>{
+      const ys=getYears(),idx=ys.indexOf(currentYear);
+      if(idx<ys.length-1) setYear(ys[idx+1]); else togglePlay();
+    },1800);
   } else { clearInterval(playInterval); }
 }
 
-// ── tooltip ───────────────────────────────────────────────────────────────────
-function showTip(e, fab, co, node) {
+// ─────────────────────────────────────────────────────────────────
+// BAR CHART RACE
+// ─────────────────────────────────────────────────────────────────
+function renderChart(year) {
+  chartYear = year;
+  const badge = document.getElementById('chartYearBadge');
+  badge.textContent = year;
+  badge.classList.add('pop');
+  setTimeout(()=>badge.classList.remove('pop'), 300);
+
+  const yearData = DB.fab_count_by_country?.[year];
+  if (!yearData) return;
+
+  // Sort by count descending
+  const sorted = Object.entries(yearData).sort((a,b)=>b[1]-a[1]);
+  const maxVal = sorted[0][1];
+  const container = document.getElementById('chartBars');
+
+  // First render: create rows
+  if (container.children.length === 0) {
+    sorted.forEach(([country, count], i) => {
+      const row = document.createElement('div');
+      row.className = 'bar-row';
+      row.id = `bar-row-${country.replace(/\s/g,'_')}`;
+      row.innerHTML = `
+        <div class="bar-rank">#${i+1}</div>
+        <div class="bar-flag">${COUNTRY_FLAGS[country]||'🌐'}</div>
+        <div class="bar-country" style="color:${COUNTRY_COLORS[country]||'#fff'}">${country}</div>
+        <div class="bar-track">
+          <div class="bar-fill" id="bar-fill-${country.replace(/\s/g,'_')}"
+               style="width:${(count/maxVal*100).toFixed(1)}%;background:${COUNTRY_COLORS[country]||'#888'}">
+            <span class="bar-value">${count}</span>
+          </div>
+        </div>`;
+      container.appendChild(row);
+    });
+  } else {
+    // Animate existing bars
+    sorted.forEach(([country, count], i) => {
+      const key = country.replace(/\s/g,'_');
+      const fill = document.getElementById(`bar-fill-${key}`);
+      const row  = document.getElementById(`bar-row-${key}`);
+      if (fill) {
+        fill.style.width = `${(count/maxVal*100).toFixed(1)}%`;
+        fill.querySelector('.bar-value').textContent = count;
+      }
+      if (row) {
+        row.querySelector('.bar-rank').textContent = `#${i+1}`;
+        // Animate position by reordering in DOM
+        container.appendChild(row);
+      }
+    });
+  }
+}
+
+function toggleChartPlay() {
+  isChartPlaying = !isChartPlaying;
+  document.getElementById('chartPlayBtn').textContent = isChartPlaying ? '⏸' : '▶';
+  if (isChartPlaying) {
+    const years = [2020,2021,2022,2023,2024,2025,2026];
+    if (chartYear === years[years.length-1]) { chartYear = years[0]; renderChart(chartYear); }
+    const speed = parseInt(document.getElementById('chartSpeed').value);
+    chartPlayInterval = setInterval(()=>{
+      const idx = years.indexOf(chartYear);
+      if (idx < years.length-1) { renderChart(years[idx+1]); }
+      else { toggleChartPlay(); }
+    }, speed);
+  } else {
+    clearInterval(chartPlayInterval);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────
+// TOOLTIP
+// ─────────────────────────────────────────────────────────────────
+function showTip(e,fab,co,node) {
   const t=document.getElementById('tooltip');
   document.getElementById('tt-company').textContent=fab.name;
   document.getElementById('tt-company').style.color=co.color;
@@ -547,8 +765,8 @@ function showTip(e, fab, co, node) {
   document.getElementById('tt-type').textContent=co.cat.charAt(0).toUpperCase()+co.cat.slice(1)+' · '+co.origin;
   t.classList.add('show'); moveTip(e);
 }
-function moveTip(e) { const t=document.getElementById('tooltip'); t.style.left=`${e.clientX+12}px`; t.style.top=`${e.clientY-10}px`; }
-function hideTip()  { document.getElementById('tooltip').classList.remove('show'); }
+function moveTip(e){const t=document.getElementById('tooltip');t.style.left=`${e.clientX+12}px`;t.style.top=`${e.clientY-10}px`;}
+function hideTip(){document.getElementById('tooltip').classList.remove('show');}
 
 boot();
 </script>
