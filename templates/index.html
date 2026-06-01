@@ -237,15 +237,31 @@
     border-radius:4px; overflow:hidden; position:relative;
   }
   .bar-fill {
-    height:100%; border-radius:4px;
+    height:100%;
     transition:width .8s cubic-bezier(.4,0,.2,1);
     position:relative; display:flex; align-items:center;
-    min-width:2px;
+    min-width:2px; border-radius:4px 0 0 4px;
   }
   .bar-fill::after {
     content:''; position:absolute; inset:0;
     background:linear-gradient(90deg,transparent 60%,rgba(255,255,255,.15));
-    border-radius:4px;
+    border-radius:4px 0 0 4px;
+  }
+  .bar-construction {
+    height:100%;
+    transition:width .8s cubic-bezier(.4,0,.2,1);
+    position:relative;
+    min-width:0px;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(255,210,50,0.25),
+      rgba(255,210,50,0.25) 4px,
+      rgba(80,80,80,0.2) 4px,
+      rgba(80,80,80,0.2) 8px
+    );
+    border-left: 1px dashed rgba(255,210,50,0.4);
+    border-radius: 0 4px 4px 0;
+    flex-shrink:0;
   }
   .bar-value {
     position:absolute; right:8px; top:50%; transform:translateY(-50%);
@@ -253,6 +269,12 @@
     color:rgba(255,255,255,.9); text-shadow:0 1px 3px rgba(0,0,0,.5);
     z-index:1;
   }
+  .bar-construction-label {
+    position:absolute; right:2px; top:50%; transform:translateY(-50%);
+    font-family:'Space Mono',monospace; font-size:9px;
+    color:rgba(255,210,50,0.8); white-space:nowrap; z-index:1;
+  }
+  .bar-inner { display:flex; height:100%; flex:1; position:relative; }
   .bar-flag { font-size:16px; flex-shrink:0; }
 
   .chart-legend {
@@ -407,6 +429,16 @@
     </div>
     <div class="chart-area">
       <div class="chart-bars" id="chartBars"></div>
+      <div style="display:flex;gap:20px;margin-top:14px;align-items:center;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);">
+          <div style="width:18px;height:12px;border-radius:3px;background:#00d4ff;"></div>
+          Active fabs (used for ranking)
+        </div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);">
+          <div style="width:18px;height:12px;border-radius:3px;background:repeating-linear-gradient(45deg,rgba(255,210,50,0.4),rgba(255,210,50,0.4) 3px,rgba(60,60,60,0.3) 3px,rgba(60,60,60,0.3) 6px);border:1px dashed rgba(255,210,50,0.5);"></div>
+          Under construction 🚧 (not ranked)
+        </div>
+      </div>
     </div>
   </div>
 
@@ -694,42 +726,60 @@ function renderChart(year) {
   const yearData = DB.fab_count_by_country?.[year];
   if (!yearData) return;
 
-  // Sort by count descending
-  const sorted = Object.entries(yearData).sort((a,b)=>b[1]-a[1]);
-  const maxVal = sorted[0][1];
+  // Each entry is { active, construction } — rank by ACTIVE only
+  const entries = Object.entries(yearData).map(([country, val]) => ({
+    country,
+    active: typeof val === 'object' ? val.active : val,
+    construction: typeof val === 'object' ? val.construction : 0
+  }));
+  const sorted = entries.sort((a,b) => b.active - a.active);
+  const maxVal = sorted[0].active + (sorted[0].construction || 0); // scale by total
   const container = document.getElementById('chartBars');
 
   // First render: create rows
   if (container.children.length === 0) {
-    sorted.forEach(([country, count], i) => {
+    sorted.forEach(({country, active, construction}, i) => {
+      const key = country.replace(/\s/g,'_');
+      const color = COUNTRY_COLORS[country] || '#888';
+      const activePct = (active / maxVal * 100).toFixed(1);
+      const constrPct = (construction / maxVal * 100).toFixed(1);
       const row = document.createElement('div');
       row.className = 'bar-row';
-      row.id = `bar-row-${country.replace(/\s/g,'_')}`;
+      row.id = `bar-row-${key}`;
       row.innerHTML = `
         <div class="bar-rank">#${i+1}</div>
         <div class="bar-flag">${COUNTRY_FLAGS[country]||'🌐'}</div>
-        <div class="bar-country" style="color:${COUNTRY_COLORS[country]||'#fff'}">${country}</div>
+        <div class="bar-country" style="color:${color}">${country}</div>
         <div class="bar-track">
-          <div class="bar-fill" id="bar-fill-${country.replace(/\s/g,'_')}"
-               style="width:${(count/maxVal*100).toFixed(1)}%;background:${COUNTRY_COLORS[country]||'#888'}">
-            <span class="bar-value">${count}</span>
+          <div class="bar-inner">
+            <div class="bar-fill" id="bar-fill-${key}" style="width:${activePct}%;background:${color}">
+              <span class="bar-value">${active}</span>
+            </div>
+            <div class="bar-construction" id="bar-constr-${key}" style="width:${constrPct}%" title="${construction} under construction">
+              ${construction > 0 ? `<span class="bar-construction-label">+${construction} 🚧</span>` : ''}
+            </div>
           </div>
         </div>`;
       container.appendChild(row);
     });
   } else {
-    // Animate existing bars
-    sorted.forEach(([country, count], i) => {
+    sorted.forEach(({country, active, construction}, i) => {
       const key = country.replace(/\s/g,'_');
-      const fill = document.getElementById(`bar-fill-${key}`);
-      const row  = document.getElementById(`bar-row-${key}`);
+      const fill   = document.getElementById(`bar-fill-${key}`);
+      const constr = document.getElementById(`bar-constr-${key}`);
+      const row    = document.getElementById(`bar-row-${key}`);
+      const activePct = (active / maxVal * 100).toFixed(1);
+      const constrPct = (construction / maxVal * 100).toFixed(1);
       if (fill) {
-        fill.style.width = `${(count/maxVal*100).toFixed(1)}%`;
-        fill.querySelector('.bar-value').textContent = count;
+        fill.style.width = `${activePct}%`;
+        fill.querySelector('.bar-value').textContent = active;
+      }
+      if (constr) {
+        constr.style.width = `${constrPct}%`;
+        constr.innerHTML = construction > 0 ? `<span class="bar-construction-label">+${construction} 🚧</span>` : '';
       }
       if (row) {
         row.querySelector('.bar-rank').textContent = `#${i+1}`;
-        // Animate position by reordering in DOM
         container.appendChild(row);
       }
     });

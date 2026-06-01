@@ -1403,88 +1403,298 @@
   },
   "fab_count_by_country": {
     "2020": {
-      "China": 42,
-      "Taiwan": 38,
-      "South Korea": 22,
-      "USA": 18,
-      "Japan": 16,
-      "Europe": 12,
-      "Singapore": 4,
-      "Israel": 2,
-      "Malaysia": 3,
-      "Other": 5
+      "China": {
+        "active": 42,
+        "construction": 3
+      },
+      "Taiwan": {
+        "active": 38,
+        "construction": 2
+      },
+      "South Korea": {
+        "active": 22,
+        "construction": 1
+      },
+      "USA": {
+        "active": 18,
+        "construction": 2
+      },
+      "Japan": {
+        "active": 16,
+        "construction": 0
+      },
+      "Europe": {
+        "active": 12,
+        "construction": 1
+      },
+      "Singapore": {
+        "active": 4,
+        "construction": 0
+      },
+      "Israel": {
+        "active": 2,
+        "construction": 0
+      },
+      "Malaysia": {
+        "active": 3,
+        "construction": 0
+      },
+      "Other": {
+        "active": 5,
+        "construction": 0
+      }
     },
     "2021": {
-      "China": 46,
-      "Taiwan": 39,
-      "South Korea": 23,
-      "USA": 19,
-      "Japan": 16,
-      "Europe": 12,
-      "Singapore": 4,
-      "Israel": 2,
-      "Malaysia": 3,
-      "Other": 5
+      "China": {
+        "active": 46,
+        "construction": 6
+      },
+      "Taiwan": {
+        "active": 39,
+        "construction": 3
+      },
+      "South Korea": {
+        "active": 23,
+        "construction": 2
+      },
+      "USA": {
+        "active": 19,
+        "construction": 3
+      },
+      "Japan": {
+        "active": 16,
+        "construction": 1
+      },
+      "Europe": {
+        "active": 12,
+        "construction": 2
+      },
+      "Singapore": {
+        "active": 4,
+        "construction": 1
+      },
+      "Israel": {
+        "active": 2,
+        "construction": 0
+      },
+      "Malaysia": {
+        "active": 3,
+        "construction": 0
+      },
+      "Other": {
+        "active": 5,
+        "construction": 1
+      }
     },
     "2022": {
-      "China": 51,
-      "Taiwan": 40,
-      "South Korea": 24,
-      "USA": 20,
-      "Japan": 17,
-      "Europe": 13,
-      "Singapore": 5,
-      "Israel": 2,
-      "Malaysia": 3,
-      "Other": 6
+      "China": {
+        "active": 51,
+        "construction": 8
+      },
+      "Taiwan": {
+        "active": 40,
+        "construction": 3
+      },
+      "South Korea": {
+        "active": 24,
+        "construction": 2
+      },
+      "USA": {
+        "active": 20,
+        "construction": 5
+      },
+      "Japan": {
+        "active": 17,
+        "construction": 2
+      },
+      "Europe": {
+        "active": 13,
+        "construction": 3
+      },
+      "Singapore": {
+        "active": 5,
+        "construction": 1
+      },
+      "Israel": {
+        "active": 2,
+        "construction": 0
+      },
+      "Malaysia": {
+        "active": 3,
+        "construction": 1
+      },
+      "Other": {
+        "active": 6,
+        "construction": 1
+      }
     },
     "2023": {
-      "China": 58,
-      "Taiwan": 41,
-      "South Korea": 24,
-      "USA": 21,
-      "Japan": 18,
-      "Europe": 13,
-      "Singapore": 5,
-      "Israel": 2,
-      "Malaysia": 4,
-      "Other": 6
+      "China": {
+        "active": 58,
+        "construction": 10
+      },
+      "Taiwan": {
+        "active": 41,
+        "construction": 4
+      },
+      "South Korea": {
+        "active": 24,
+        "construction": 2
+      },
+      "USA": {
+        "active": 21,
+        "construction": 7
+      },
+      "Japan": {
+        "active": 18,
+        "construction": 4
+      },
+      "Europe": {
+        "active": 13,
+        "construction": 4
+      },
+      "Singapore": {
+        "active": 5,
+        "construction": 1
+      },
+      "Israel": {
+        "active": 2,
+        "construction": 1
+      },
+      "Malaysia": {
+        "active": 4,
+        "construction": 1
+      },
+      "Other": {
+        "active": 6,
+        "construction": 2
+      }
     },
     "2024": {
-      "China": 64,
-      "Taiwan": 43,
-      "South Korea": 25,
-      "USA": 24,
-      "Japan": 20,
-      "Europe": 15,
-      "Singapore": 5,
-      "Israel": 2,
-      "Malaysia": 4,
-      "Other": 7
+      "China": {
+        "active": 64,
+        "construction": 8
+      },
+      "Taiwan": {
+        "active": 43,
+        "construction": 4
+      },
+      "South Korea": {
+        "active": 25,
+        "construction": 3
+      },
+      "USA": {
+        "active": 24,
+        "construction": 6
+      },
+      "Japan": {
+        "active": 20,
+        "construction": 3
+      },
+      "Europe": {
+        "active": 15,
+        "construction": 4
+      },
+      "Singapore": {
+        "active": 5,
+        "construction": 1
+      },
+      "Israel": {
+        "active": 2,
+        "construction": 1
+      },
+      "Malaysia": {
+        "active": 4,
+        "construction": 1
+      },
+      "Other": {
+        "active": 7,
+        "construction": 2
+      }
     },
     "2025": {
-      "China": 70,
-      "Taiwan": 45,
-      "South Korea": 26,
-      "USA": 27,
-      "Japan": 22,
-      "Europe": 16,
-      "Singapore": 6,
-      "Israel": 2,
-      "Malaysia": 4,
-      "Other": 8
+      "China": {
+        "active": 70,
+        "construction": 6
+      },
+      "Taiwan": {
+        "active": 45,
+        "construction": 3
+      },
+      "South Korea": {
+        "active": 26,
+        "construction": 2
+      },
+      "USA": {
+        "active": 27,
+        "construction": 5
+      },
+      "Japan": {
+        "active": 22,
+        "construction": 3
+      },
+      "Europe": {
+        "active": 16,
+        "construction": 3
+      },
+      "Singapore": {
+        "active": 6,
+        "construction": 1
+      },
+      "Israel": {
+        "active": 2,
+        "construction": 1
+      },
+      "Malaysia": {
+        "active": 4,
+        "construction": 1
+      },
+      "Other": {
+        "active": 8,
+        "construction": 2
+      }
     },
     "2026": {
-      "China": 75,
-      "Taiwan": 47,
-      "South Korea": 27,
-      "USA": 30,
-      "Japan": 23,
-      "Europe": 18,
-      "Singapore": 6,
-      "Israel": 3,
-      "Malaysia": 5,
-      "Other": 9
+      "China": {
+        "active": 75,
+        "construction": 5
+      },
+      "Taiwan": {
+        "active": 47,
+        "construction": 3
+      },
+      "South Korea": {
+        "active": 27,
+        "construction": 2
+      },
+      "USA": {
+        "active": 30,
+        "construction": 4
+      },
+      "Japan": {
+        "active": 23,
+        "construction": 3
+      },
+      "Europe": {
+        "active": 18,
+        "construction": 4
+      },
+      "Singapore": {
+        "active": 6,
+        "construction": 1
+      },
+      "Israel": {
+        "active": 3,
+        "construction": 1
+      },
+      "Malaysia": {
+        "active": 5,
+        "construction": 1
+      },
+      "Other": {
+        "active": 9,
+        "construction": 2
+      }
     }
   }
 }
