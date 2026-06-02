@@ -852,7 +852,7 @@
         "2023": "3nm/N2(dev)",
         "2024": "3nm/N2",
         "2025": "N2/N3",
-        "2026": "N2/N3/N5/CoWoS"
+        "2026": "N2/N3/N5"
       }
     },
     {
@@ -870,7 +870,7 @@
       "id": "tsmc-jp",
       "company": "TSMC",
       "loc": "Kumamoto_JP",
-      "name": "TSMC Kumamoto",
+      "name": "TSMC Kumamoto Japan",
       "years": {
         "2024": "N22/N28(start)",
         "2025": "N22/N28",
@@ -881,21 +881,21 @@
       "id": "tsmc-eu",
       "company": "TSMC",
       "loc": "Dresden_EU",
-      "name": "TSMC Dresden",
+      "name": "TSMC Dresden (planned)",
       "years": {
-        "2026": "N28\u2192N12(planned 2027)"
+        "2026": "N28(planned 2027)"
       }
     },
     {
       "id": "sam-hw",
       "company": "Samsung",
       "loc": "Hwaseong",
-      "name": "Samsung Hwaseong/PT",
+      "name": "Samsung Hwaseong/Pyeongtaek",
       "years": {
         "2020": "5nm/7nm",
         "2021": "5nm/4nm",
         "2022": "4nm/3nm(dev)",
-        "2023": "3nm(GAA)/4nm",
+        "2023": "3nm GAA/4nm",
         "2024": "3nm/4nm",
         "2025": "3nm/4nm",
         "2026": "3nm/4nm"
@@ -946,7 +946,7 @@
       "id": "umc-cn",
       "company": "UMC",
       "loc": "HeJian_CN",
-      "name": "UMC He Jian CN",
+      "name": "UMC He Jian China",
       "years": {
         "2020": "55nm/28nm",
         "2021": "55nm/28nm",
@@ -978,7 +978,7 @@
       "loc": "Malta_NY",
       "name": "GF Fab 8 Malta NY",
       "years": {
-        "2020": "14nm/12nm/22nm",
+        "2020": "14nm/12nm",
         "2021": "12nm/22nm",
         "2022": "12nm/22nm",
         "2023": "12nm/22nm",
@@ -1066,7 +1066,7 @@
       "id": "int-il",
       "company": "Intel",
       "loc": "Kiryat_Gat_IL",
-      "name": "Intel Kiryat Gat IL",
+      "name": "Intel Kiryat Gat Israel",
       "years": {
         "2020": "14nm",
         "2021": "10nm",
@@ -1081,16 +1081,14 @@
       "id": "int-de",
       "company": "Intel",
       "loc": "Magdeburg_DE",
-      "name": "Intel Magdeburg DE",
-      "years": {
-        "2026": "Intel 18A (planned 2027)"
-      }
+      "name": "Intel Magdeburg DE (cancelled 2024)",
+      "years": {}
     },
     {
       "id": "psmc-tw",
       "company": "PSMC",
       "loc": "Hsinchu",
-      "name": "PSMC Hsinchu",
+      "name": "PSMC Hsinchu Taiwan",
       "years": {
         "2020": "40nm/90nm",
         "2021": "40nm/90nm",
@@ -1107,7 +1105,7 @@
       "loc": "Saijo_JP",
       "name": "PSMC Saijo Japan",
       "years": {
-        "2026": "40nm (planned 2027)"
+        "2026": "40nm(planned 2027)"
       }
     },
     {
@@ -1155,10 +1153,10 @@
       }
     },
     {
-      "id": "nx-wh",
+      "id": "nx-hf",
       "company": "Nexchip",
       "loc": "Hefei_CN",
-      "name": "Nexchip Hefei",
+      "name": "Nexchip Hefei China",
       "years": {
         "2021": "65nm",
         "2022": "40nm/28nm",
@@ -1187,12 +1185,12 @@
       "id": "vis-kh",
       "company": "VIS",
       "loc": "Kaohsiung",
-      "name": "VIS Kaohsiung",
+      "name": "VIS Kaohsiung Taiwan",
       "years": {
-        "2020": "0.25um\u21920.11um",
-        "2021": "0.25um\u21920.11um",
-        "2022": "0.25um\u21920.11um",
-        "2023": "0.25um\u21920.11um",
+        "2020": "0.25\u21920.11um",
+        "2021": "0.25\u21920.11um",
+        "2022": "0.25\u21920.11um",
+        "2023": "0.25\u21920.11um",
         "2024": "0.11\u21920.25um",
         "2025": "0.11\u21920.25um",
         "2026": "0.11\u21920.25um"
@@ -1232,7 +1230,7 @@
       "id": "mic-jp",
       "company": "Micron",
       "loc": "Hiroshima_JP",
-      "name": "Micron Hiroshima",
+      "name": "Micron Hiroshima Japan",
       "years": {
         "2020": "DRAM",
         "2021": "DRAM",
@@ -1264,7 +1262,7 @@
       "loc": "Purdue_IN",
       "name": "SK Hynix Purdue IN",
       "years": {
-        "2025": "HBM US Mfg (dev)",
+        "2025": "HBM US(dev)",
         "2026": "HBM US Mfg."
       }
     },
@@ -1272,7 +1270,7 @@
       "id": "ymtc-wh",
       "company": "YMTC",
       "loc": "Wuhan_CN",
-      "name": "YMTC Wuhan",
+      "name": "YMTC Wuhan China",
       "years": {
         "2020": "64L NAND",
         "2021": "128L NAND",
@@ -1287,13 +1285,13 @@
       "id": "cxmt-hf",
       "company": "CXMT",
       "loc": "Hefei_CN",
-      "name": "CXMT Hefei",
+      "name": "CXMT Hefei China",
       "years": {
         "2021": "DDR4 19nm",
         "2022": "DDR4 17nm",
         "2023": "DDR4 17nm",
         "2024": "DDR5 17nm",
-        "2025": "DDR5 17nm/LPDDR5",
+        "2025": "DDR5/LPDDR5",
         "2026": "LPDDR5/HBM(dev)"
       }
     },
@@ -1301,7 +1299,7 @@
       "id": "sam-mem",
       "company": "Samsung_mem",
       "loc": "Hwaseong",
-      "name": "Samsung Hwaseong Mem",
+      "name": "Samsung Memory Hwaseong",
       "years": {
         "2020": "HBM2/DRAM",
         "2021": "HBM2E/DRAM",
@@ -1316,13 +1314,13 @@
       "id": "ase-tw",
       "company": "ASE",
       "loc": "Kaohsiung_ASE",
-      "name": "ASE Kaohsiung",
+      "name": "ASE Kaohsiung Taiwan",
       "years": {
         "2020": "ATP/SiP",
         "2021": "ATP/SiP",
-        "2022": "ATP/Advanced Pkg",
+        "2022": "ATP/Adv Pkg",
         "2023": "Advanced Pkg",
-        "2024": "Advanced Pkg/CoWoS-like",
+        "2024": "Adv Pkg/CoWoS",
         "2025": "Advanced Pkg",
         "2026": "Advanced Pkg"
       }
@@ -1333,7 +1331,7 @@
       "loc": "Shanghai_SPIL",
       "name": "SPIL Shanghai",
       "years": {
-        "2020": "Wire Bond/Flip Chip",
+        "2020": "Wire Bond/FC",
         "2021": "Flip Chip",
         "2022": "Flip Chip/SiP",
         "2023": "SiP/FC",
@@ -1360,45 +1358,46 @@
   ],
   "milestones": {
     "2020": [
-      "TSMC 5nm mass prod.",
-      "COVID disrupts supply chains",
-      "SMIC hit by US restrictions"
+      "TSMC 5nm mass production",
+      "COVID-19 disrupts supply chains",
+      "SMIC hit by US export restrictions"
     ],
     "2021": [
-      "TSMC 5nm ramps up",
-      "Chip shortage crisis peaks",
-      "YMTC 128L NAND prod.",
-      "US CHIPS Act discussion"
+      "Global chip shortage peaks",
+      "TSMC 5nm full ramp",
+      "YMTC 128-layer NAND",
+      "US CHIPS Act discussions begin"
     ],
     "2022": [
-      "TSMC 3nm dev",
+      "TSMC 3nm development",
       "Samsung 3nm GAA first",
       "YMTC Xtacking 2.0",
-      "Inflation Reduction Act"
+      "US CHIPS and Science Act signed"
     ],
     "2023": [
-      "TSMC 3nm mass prod.",
+      "TSMC 3nm mass production",
       "CXMT DDR4 volume ramp",
       "SK Hynix HBM3E launch",
-      "Export controls expand"
+      "US export controls expand"
     ],
     "2024": [
-      "TSMC Fab21 AZ opens",
-      "TSMC Kumamoto opens",
-      "Intel 18A development",
-      "SK Hynix HBM3E AI boom"
+      "TSMC Fab21 Arizona Phase 1 opens",
+      "TSMC Kumamoto Japan opens",
+      "Intel 18A development phase",
+      "SK Hynix HBM3E AI boom",
+      "Intel cancels Magdeburg & Poland fabs"
     ],
     "2025": [
       "TSMC N2 production",
-      "Intel 18A risk prod.",
-      "YMTC 300L NAND",
-      "SK Hynix Purdue dev start"
+      "Intel 18A risk production",
+      "YMTC 300-layer NAND",
+      "SK Hynix Purdue IN HBM"
     ],
     "2026": [
       "TSMC N2 full ramp",
-      "Intel Dresden planned",
-      "CXMT HBM dev begins",
-      "Global fab count peaks"
+      "CXMT HBM development begins",
+      "Global fab count peaks",
+      "India 4 additional fabs approved"
     ]
   },
   "fab_count_by_country": {
@@ -1423,7 +1422,7 @@
         "active": 16,
         "construction": 0
       },
-      "Europe": {
+      "Europe / ME": {
         "active": 12,
         "construction": 1
       },
@@ -1465,7 +1464,7 @@
         "active": 16,
         "construction": 1
       },
-      "Europe": {
+      "Europe / ME": {
         "active": 12,
         "construction": 2
       },
@@ -1507,7 +1506,7 @@
         "active": 17,
         "construction": 2
       },
-      "Europe": {
+      "Europe / ME": {
         "active": 13,
         "construction": 3
       },
@@ -1549,7 +1548,7 @@
         "active": 18,
         "construction": 4
       },
-      "Europe": {
+      "Europe / ME": {
         "active": 13,
         "construction": 4
       },
@@ -1591,7 +1590,7 @@
         "active": 20,
         "construction": 3
       },
-      "Europe": {
+      "Europe / ME": {
         "active": 15,
         "construction": 4
       },
@@ -1633,7 +1632,7 @@
         "active": 22,
         "construction": 3
       },
-      "Europe": {
+      "Europe / ME": {
         "active": 16,
         "construction": 3
       },
@@ -1675,7 +1674,7 @@
         "active": 23,
         "construction": 3
       },
-      "Europe": {
+      "Europe / ME": {
         "active": 18,
         "construction": 4
       },
