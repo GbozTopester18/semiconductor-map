@@ -727,16 +727,7 @@ const COUNTRY_COLORS = {
   'Malaysia':'#6ee7b7','Other':'#94a3b8'
 };
 
-// ── Boot ─────────────────────────────────────────────────────────
-async function boot() {
-  const res = await fetch('/api/data');
-  DB = await res.json();
-  buildSidebar();
-  buildYearButtons();
-  renderYear(currentYear);
-  renderChart(2020);
-  document.getElementById('loader').classList.add('hide');
-}
+
 
 // ── Sidebar ───────────────────────────────────────────────────────
 function buildSidebar() {
