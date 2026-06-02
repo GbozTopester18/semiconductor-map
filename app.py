@@ -1,7 +1,13 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, make_response
 import json, os, threading
 
 app = Flask(__name__)
+
+@app.after_request
+def add_headers(response):
+    response.headers['X-Frame-Options'] = 'ALLOWALL'
+    response.headers['Content-Security-Policy'] = "frame-ancestors *"
+    return response
 DATA_FILE = os.path.join(os.path.dirname(__file__), 'data.json')
 
 # Load data.json once at startup into memory
