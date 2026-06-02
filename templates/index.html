@@ -938,7 +938,7 @@ const CHART_YEAR_DATA={
 
 let scene3d=null,camera3d=null,renderer3d=null,beams3d=[],curH3d=[],tgtH3d=[];
 let rotY3d=0.3,rotX3d=0.42,drag3d=false,lx3d=0,ly3d=0;
-let chartYear=2020,chartPlayInterval=null,isChartPlaying=false;
+chartYear=2020; chartPlayInterval=null; isChartPlaying=false;
 
 function geoTo3D(lng,lat){
   return {x:(lng/180)*1.6, z:-(lat/90)*1.0};
