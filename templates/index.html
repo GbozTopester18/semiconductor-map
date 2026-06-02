@@ -1167,12 +1167,23 @@ function moveTip(e){const t=document.getElementById('tooltip');t.style.left=`${e
 function hideTip(){document.getElementById('tooltip').classList.remove('show');}
 
 async function boot(){
-  const res=await fetch('/api/data');
-  DB=await res.json();
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(()=>controller.abort(), 8000);
+    const res = await fetch('/api/data', {signal: controller.signal});
+    clearTimeout(timeout);
+    DB = await res.json();
+  } catch(e) {
+    console.error('Failed to load data:', e);
+    // Show error on screen instead of hanging
+    const loader = document.getElementById('loader');
+    loader.innerHTML = '<div style="font-family:\'Cormorant Garamond\',serif;color:#c9a84c;font-size:22px;letter-spacing:.2em;">JL <span>ADVISORY</span></div><div style="font-size:10px;color:#e74c3c;letter-spacing:.2em;margin-top:8px;">ERROR LOADING DATA — RETRYING...</div>';
+    await new Promise(r=>setTimeout(r,3000));
+    return boot();
+  }
   buildSidebar();
   buildYearButtons();
   renderYear(currentYear);
-  // Init 3D after a short delay to ensure DOM is ready
   setTimeout(()=>{ if(window.THREE&&window.topojson) init3D(); },300);
   document.getElementById('loader').classList.add('hide');
 }
